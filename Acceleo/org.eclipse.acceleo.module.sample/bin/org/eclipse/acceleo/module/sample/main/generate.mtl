@@ -1,0 +1,134 @@
+[comment encoding = UTF-8 /]
+[module generate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+
+[for (s : Service | aMicroserviceArchitecture.services)]
+	
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+		
+		[comment main application /]
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/'+s.fullname+'Application.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/];
+
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].commandhandlers.[s.fullname/]CommandHandlersConfiguration;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].dao.[s.fullname/]Configuration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
+import io.eventuate.jdbckafka.TramJdbcKafkaConfiguration;
+[if (s.oclAsType(micro::AggregateService).handleModelEvents->size() > 0)]
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].messaging.EventHandlersConfiguration;
+[/if]
+
+@SpringBootApplication
+@Import({[s.fullname/]Configuration.class,
+	[s.fullname/]CommandHandlersConfiguration.class,
+	TramJdbcKafkaConfiguration.class[if (s.oclAsType(micro::AggregateService).handleModelEvents->size() > 0)], EventHandlersConfiguration.class[/if]})
+public class [s.fullname/]Application {
+
+	public static void main(String['['/][']'/] args) {
+		SpringApplication.run([s.fullname/]Application.class, args);
+	}
+}
+
+		[/file]	
+		
+	[/if]
+	[if (s.oclIsTypeOf(micro::ViewService))]
+		
+		[comment main application /]
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/'+s.fullname+'Application.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/];
+
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].messaging.EventHandlersConfiguration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
+import io.eventuate.jdbckafka.TramJdbcKafkaConfiguration;
+
+@SpringBootApplication
+@Import({EventHandlersConfiguration.class, TramJdbcKafkaConfiguration.class})
+public class [s.fullname/]Application {
+
+	public static void main(String['['/][']'/] args) {
+		SpringApplication.run([s.fullname/]Application.class, args);
+	}
+}
+
+		[/file]	
+	[/if]
+
+[/for]
+
+[file ('pom.xml', false, 'UTF-8')]
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.[aMicroserviceArchitecture.name.toLower()/]</groupId>
+  <artifactId>base</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+	
+  <modules>
+      <module>eventuate-tram-aggregate-domain-events</module>
+	  <module>service-model</module>	  
+	  [for (s : Service | aMicroserviceArchitecture.services)]
+	  <module>[s.name/]</module>
+	  [/for]	  
+  </modules>
+	
+<build>
+		<plugins>
+			<plugin>
+			    <groupId>com.spotify</groupId>
+			    <artifactId>docker-maven-plugin</artifactId>
+			    <version>0.4.13</version>
+			    <configuration>
+				    <skipDockerBuild>true</skipDockerBuild>		  
+		            </configuration>
+			</plugin>	        
+		</plugins>
+	</build>
+</project>
+[/file]
+[file ('settings.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8" ?>
+<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd'
+          xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-eventuateio-oss-eventuate-maven-release</id>
+                    <name>bintray</name>
+                    <url>https://dl.bintray.com/eventuateio-oss/eventuate-maven-release</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-eventuateio-oss-eventuate-maven-release</id>
+                    <name>bintray-plugins</name>
+                    <url>https://dl.bintray.com/eventuateio-oss/eventuate-maven-release</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>bintray</id>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>bintray</activeProfile>
+    </activeProfiles>
+</settings>
+[/file]
+[/template]
+

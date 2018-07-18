@@ -1,0 +1,173 @@
+[comment encoding = UTF-8 /]
+[module modelGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+
+[for (s : Service | aMicroserviceArchitecture.services)]
+[if (s.oclIsTypeOf(micro::AggregateService))]
+	[for (model : Model | s.models )]
+	[comment model classes /]
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/model/'+model.name+'.java', false, 'UTF-8')]			
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="[model.name/]s")
+public class [model.name/]{
+
+			[for (attribute : Attribute | model.attributes)]					
+				[if (attribute.isId)]
+	@Id
+					[if (attribute.isGenerated)]
+	@GeneratedValue(strategy = GenerationType.IDENTITY)						
+					[/if]	
+	private [attribute.oclAsType(micro::PrimitiveTypeAttribute).type/] [attribute.name.toLower()/]; 
+					[else]
+						[if (attribute.oclIsTypeOf(micro::PrimitiveTypeAttribute))]
+							[if (attribute.isMany)]
+	private List<[attribute.oclAsType(micro::PrimitiveTypeAttribute).type/]> [attribute.name.toLower()/];								
+								[else]
+    private [attribute.oclAsType(micro::PrimitiveTypeAttribute).type/] [attribute.name.toLower()/];									
+							[/if]
+						[/if]
+						[if (attribute.oclIsTypeOf(micro::ReferenceAttribute))]
+							[if (attribute.isMany)]
+	private List<[attribute.oclAsType(micro::ReferenceAttribute).type.name/]> [attribute.name.toLower()/] = new ArrayList<>();							
+								[else]
+	private [attribute.oclAsType(micro::ReferenceAttribute).type.name/] [attribute.name.toLower()/];								
+							[/if]
+						[/if]				
+				[/if]
+			[/for]
+				
+				[comment empty constructor /]
+	public [model.name/]() {}
+
+				[comment setter and getter /]
+				[for (attribute : Attribute | model.attributes)]
+	public void set[attribute.name /]([if (attribute.oclIsTypeOf(micro::PrimitiveTypeAttribute))][if (attribute.isMany)]List<[attribute.oclAsType(micro::PrimitiveTypeAttribute).type/]>[else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if][/if][if (attribute.oclIsTypeOf(micro::ReferenceAttribute))][if (attribute.isMany)]List<[attribute.oclAsType(micro::ReferenceAttribute).type.name/]>[else][attribute.oclAsType(micro::ReferenceAttribute).type.name/][/if][/if] [attribute.name.toLower()/]) {
+		this.[attribute.name.toLower()/] = [attribute.name.toLower()/];
+	}	
+
+	public [if (attribute.oclIsTypeOf(micro::PrimitiveTypeAttribute))][if (attribute.isMany)]List<[attribute.oclAsType(micro::PrimitiveTypeAttribute).type/]>[else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if][/if][if (attribute.oclIsTypeOf(micro::ReferenceAttribute))][if (attribute.isMany)]List<[attribute.oclAsType(micro::ReferenceAttribute).type.name/]>[else][attribute.oclAsType(micro::ReferenceAttribute).type.name/][/if][/if] get[attribute.name/]() {
+		return [attribute.name.toLower() /];
+	}
+				[/for]
+
+}
+			[/file]
+
+			[comment repository /]
+			
+			[if (s.oclAsType(micro::AggregateService).modelEvents.model->select(e | e.name.toString().equalsIgnoreCase(model.name))->size() > 0)]
+				[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/model/'+model.name+'Repository.java', false, 'UTF-8')]			
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface [model.name/]Repository extends MongoRepository<[model.name/],String>{
+
+}
+				[/file]
+			[/if]
+		[/for]
+
+		[for (modelEvent : ModelEvent | s.oclAsType(micro::AggregateService).modelEvents)]
+			
+			[comment model event classes /]
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/model/'+modelEvent.model.name+'DomainEventPublisher.java', false, 'UTF-8')]			
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model;
+
+import org.springframework.stereotype.Component;
+import io.eventuate.tram.events.aggregates.AbstractAggregateDomainEventPublisher;
+import io.eventuate.tram.events.publisher.DomainEventPublisher;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.shortname.toLower()/].api.events.[modelEvent.model.name/]DomainEvent;
+
+@Component
+public class [modelEvent.model.name/]DomainEventPublisher extends AbstractAggregateDomainEventPublisher<[modelEvent.model.name/],[modelEvent.model.name/]DomainEvent>{
+
+	public [modelEvent.model.name/]DomainEventPublisher(DomainEventPublisher eventPublisher) {
+		super(eventPublisher, [modelEvent.model.name/].class, [modelEvent.model.name/]::get[for (attribute : Attribute | modelEvent.model.attributes)][if (attribute.isId)][attribute.name/][/if][/for]);
+    }
+}
+			[/file]
+		[/for]
+[else]
+	
+	[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.models->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+	
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/model/'+model.name+'.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="[model.name/]s")
+public class [model.name/]{
+
+			[for (attribute : Attribute | model.attributes)]
+				[if (attribute.oclIsTypeOf(micro::PrimitiveTypeAttribute))]
+					[if (attribute.isMany)]
+	private List<[if (attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name.oclIsUndefined() = false)][attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name/][else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if]> [attribute.name.toLower()/] = new ArrayList<>();								
+						[else]
+    private [if (attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name.oclIsUndefined() = false)][attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name/][else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if] [attribute.name.toLower()/];									
+					[/if]
+				[/if]
+				[if (attribute.oclIsTypeOf(micro::ReferenceAttribute))]
+					[if (attribute.isMany)]
+	private List<[attribute.oclAsType(micro::ReferenceAttribute).type.name/]> [attribute.name.toLower()/] = new ArrayList<>();							
+						[else]
+	private [attribute.oclAsType(micro::ReferenceAttribute).type.name/] [attribute.name.toLower()/];								
+					[/if]
+				[/if]
+			[/for]
+
+			[comment empty constructor /]
+	public [model.name/]() {}
+
+			[comment setter and getter /]
+				[for (attribute : Attribute | model.attributes)]
+	public void set[attribute.name /]([if (attribute.oclIsTypeOf(micro::PrimitiveTypeAttribute))][if (attribute.isMany)]List<[if (attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name.oclIsUndefined() = false)][attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name/][else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if]>[else][if (attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name.oclIsUndefined() = false)][attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name/][else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if][/if][/if][if (attribute.oclIsTypeOf(micro::ReferenceAttribute))][if (attribute.isMany)]List<[attribute.oclAsType(micro::ReferenceAttribute).type.name/]>[else][attribute.oclAsType(micro::ReferenceAttribute).type.name/][/if][/if] [attribute.name.toLower()/]) {
+		this.[attribute.name.toLower()/] = [attribute.name.toLower()/];
+	}	
+
+	public [if (attribute.oclIsTypeOf(micro::PrimitiveTypeAttribute))][if (attribute.isMany)]List<[if (attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name.oclIsUndefined() = false)][attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name/][else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if]>[else][if (attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name.oclIsUndefined() = false)][attribute.oclAsType(micro::PrimitiveTypeAttribute).ModelToView.name/][else][attribute.oclAsType(micro::PrimitiveTypeAttribute).type/][/if][/if][/if][if (attribute.oclIsTypeOf(micro::ReferenceAttribute))][if (attribute.isMany)]List<[attribute.oclAsType(micro::ReferenceAttribute).type.name/]>[else][attribute.oclAsType(micro::ReferenceAttribute).type.name/][/if][/if] get[attribute.name/]() {
+		return [attribute.name.toLower() /];
+	}
+				[/for]
+
+}
+		[/file]
+
+		[comment repository /]
+		[if (s.oclAsType(micro::ViewService).replicateServices.modelEvents.model->select(e | e.name.toString().equalsIgnoreCase(model.name))->size() > 0)]
+			
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/repository/'+model.name+'Repository.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].repository;
+
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface [model.name/]Repository extends MongoRepository<[model.name/],String>{
+
+}			
+			[/file]
+		[/if]
+		
+	[/for]
+		
+[/if]
+[/for]
+[/template]

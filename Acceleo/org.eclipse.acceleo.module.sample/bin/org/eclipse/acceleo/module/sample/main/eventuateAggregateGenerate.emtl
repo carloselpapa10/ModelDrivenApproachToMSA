@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="eventuateAggregateGenerate" nsURI="org::eclipse::acceleo::module::sample::main::eventuateAggregateGenerate" startHeaderPosition="29" endHeaderPosition="200">
+    <input>
+      <takesTypesFrom href="http://it.univa.disim.micro#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateElement" visibility="Public" main="true">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&#xA;&#x9;xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;>&#xA;&#x9;&lt;modelVersion>4.0.0&lt;/modelVersion>&#xA;&#x9;&lt;groupId>org."/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/groupId>&#xA;&#x9;&lt;artifactId>eventuate-tram-aggregate-domain-events&lt;/artifactId>&#xA;&#x9;&lt;version>0.0.1-SNAPSHOT&lt;/version>&#xA;&#x9;&lt;packaging>jar&lt;/packaging>&#xA;&#xA;&#x9;&lt;name>eventuate-tram-aggregate-domain-events&lt;/name>&#xA;&#xA;&#x9;&lt;repositories>&#xA;&#x9;&#x9;&lt;repository>&#xA;&#x9;&#x9;&#x9;&lt;id>jcenter&lt;/id>&#xA;&#x9;&#x9;&#x9;&lt;url>http://jcenter.bintray.com&lt;/url>&#xA;&#x9;&#x9;&lt;/repository>&#xA;&#x9;&lt;/repositories>&#xA;&#xA;&#x9;&lt;properties>&#xA;&#x9;&#x9;&lt;project.build.sourceEncoding>UTF-8&lt;/project.build.sourceEncoding>&#xA;&#x9;&#x9;&lt;project.reporting.outputEncoding>UTF-8&lt;/project.reporting.outputEncoding>&#xA;&#x9;&#x9;&lt;java.version>1.8&lt;/java.version>&#xA;&#xA;&#x9;&#x9;&lt;eventuateTramSagasVersion>0.5.0.RELEASE&lt;/eventuateTramSagasVersion>&#xA;&#x9;&#x9;&lt;eventuateTramVersion>0.6.0.RELEASE&lt;/eventuateTramVersion>&#xA;&#x9;&#x9;&lt;eventuateClientVersion>0.20.1.RELEASE&lt;/eventuateClientVersion>&#xA;&#xA;&#x9;&lt;/properties>&#xA;&#xA;&#x9;&lt;dependencies>&#xA;&#x9;&#x9;&lt;dependency>&#xA;&#x9;&#x9;&#x9;&lt;groupId>io.eventuate.tram.core&lt;/groupId>&#xA;&#x9;&#x9;&#x9;&lt;artifactId>eventuate-tram-events&lt;/artifactId>&#xA;&#x9;&#x9;&#x9;&lt;version>${eventuateTramVersion}&lt;/version>&#xA;&#x9;&#x9;&lt;/dependency>&#xA;&#xA;&#x9;&lt;/dependencies>&#xA;&#x9;&lt;build>&#xA;&#x9;&#x9;&lt;finalName>eventuate-tram-aggregate-domain-events&lt;/finalName>&#xA;&#x9;&#x9;&lt;plugins>&#xA;&#x9;&#x9;&#x9;&lt;plugin>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;groupId>org.springframework.boot&lt;/groupId>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;artifactId>spring-boot-maven-plugin&lt;/artifactId>&#xA;&#x9;&#x9;&#x9;&lt;/plugin>&#xA;&#xA;&#x9;&#x9;&#x9;&lt;plugin>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;groupId>org.apache.maven.plugins&lt;/groupId>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;artifactId>maven-surefire-plugin&lt;/artifactId>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;version>2.16&lt;/version>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;configuration>&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;reuseForks>false&lt;/reuseForks>&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;forkCount>1&lt;/forkCount>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/configuration>&#xA;&#x9;&#x9;&#x9;&lt;/plugin>&#xA;&#xA;&#x9;&#x9;&#x9;&lt;plugin>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;groupId>com.spotify&lt;/groupId>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;artifactId>docker-maven-plugin&lt;/artifactId>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;version>0.4.13&lt;/version>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;configuration>&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;skipDockerBuild>true&lt;/skipDockerBuild>&#xA;&#x9;&#x9;&#x9;&#x9;&lt;/configuration>&#xA;&#x9;&#x9;&#x9;&lt;/plugin>&#xA;&#x9;&#x9;&lt;/plugins>&#xA;&#x9;&lt;/build>&#xA;&lt;/project>&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="eventuate-tram-aggregate-domain-events/pom.xml">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package io.eventuate.tram.events.aggregates;&#xA;&#xA;import io.eventuate.tram.events.common.DomainEvent;&#xA;import io.eventuate.tram.events.publisher.DomainEventPublisher;&#xA;&#xA;import java.util.List;&#xA;import java.util.function.Function;&#xA;&#xA;public class AbstractAggregateDomainEventPublisher&lt;A, E extends DomainEvent> {&#xA;&#x9;&#xA;&#x9;private Function&lt;A, Object> idSupplier;&#xA;&#x9;private DomainEventPublisher eventPublisher;&#xA;&#x9;private Class&lt;A> aggregateType;&#xA;&#xA;&#x9;protected AbstractAggregateDomainEventPublisher(DomainEventPublisher eventPublisher, Class&lt;A> aggregateType,&#xA;&#x9;&#x9;&#x9;Function&lt;A, Object> idSupplier) {&#xA;&#x9;&#x9;this.eventPublisher = eventPublisher;&#xA;&#x9;&#x9;this.aggregateType = aggregateType;&#xA;&#x9;&#x9;this.idSupplier = idSupplier;&#xA;&#x9;}&#xA;&#xA;&#x9;public void publish(A aggregate, List&lt;E> events) {&#xA;&#x9;    eventPublisher.publish(aggregateType, idSupplier.apply(aggregate), (List&lt;DomainEvent>) events);&#xA;&#x9;}&#xA;}&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="eventuate-tram-aggregate-domain-events/src/main/java/io/eventuate/tram/events/aggregates/AbstractAggregateDomainEventPublisher.java">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package io.eventuate.tram.events.aggregates;&#xA;&#xA;import io.eventuate.tram.events.common.DomainEvent;&#xA;&#xA;import java.util.Arrays;&#xA;import java.util.List;&#xA;&#xA;public class ResultWithDomainEvents&lt;A, E extends DomainEvent> {&#xA;&#xA;  public final A result;&#xA;  public final List&lt;E> events;&#xA;&#xA;  public ResultWithDomainEvents(A result, List&lt;E> events) {&#xA;    this.result = result;&#xA;    this.events = events;&#xA;  }&#xA;&#xA;  public ResultWithDomainEvents(A result, E... events) {&#xA;    this.result = result;&#xA;    this.events = Arrays.asList(events);&#xA;  }&#xA;}&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="eventuate-tram-aggregate-domain-events/src/main/java/io/eventuate/tram/events/aggregates/ResultWithDomainEvents.java">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="aMicroserviceArchitecture">
+        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateElement"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aMicroserviceArchitecture">
+          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="micro_MicroserviceArchitecture_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateElement">
+      <details key="start" value="98"/>
+      <details key="end" value="3947"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateElement/%">
+      <details key="start" value="203"/>
+      <details key="end" value="2252"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateElement/%/%">
+      <details key="start" value="277"/>
+      <details key="end" value="533"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateElement/%/%.1">
+      <details key="start" value="534"/>
+      <details key="end" value="574"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateElement/%/%.1/%">
+      <details key="start" value="534"/>
+      <details key="end" value="564"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateElement/%/%.1/%/aMicroserviceArchitecture">
+      <details key="start" value="534"/>
+      <details key="end" value="559"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateElement/%/%.2">
+      <details key="start" value="576"/>
+      <details key="end" value="2245"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateElement/%/%.3">
+      <details key="start" value="210"/>
+      <details key="end" value="258"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateElement/%/%.4">
+      <details key="start" value="267"/>
+      <details key="end" value="274"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateElement/%.1">
+      <details key="start" value="2253"/>
+      <details key="end" value="2254"/>
+      <details key="line" value="74"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateElement/%.2">
+      <details key="start" value="2254"/>
+      <details key="end" value="3264"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateElement/%.2/%">
+      <details key="start" value="2413"/>
+      <details key="end" value="3257"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateElement/%.2/%.1">
+      <details key="start" value="2261"/>
+      <details key="end" value="2394"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateElement/%.2/%.2">
+      <details key="start" value="2403"/>
+      <details key="end" value="2410"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateElement/%.3">
+      <details key="start" value="3265"/>
+      <details key="end" value="3266"/>
+      <details key="line" value="102"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateElement/%.4">
+      <details key="start" value="3266"/>
+      <details key="end" value="3934"/>
+      <details key="line" value="103"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateElement/%.4/%">
+      <details key="start" value="3410"/>
+      <details key="end" value="3927"/>
+      <details key="line" value="104"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateElement/%.4/%.1">
+      <details key="start" value="3273"/>
+      <details key="end" value="3391"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateElement/%.4/%.2">
+      <details key="start" value="3400"/>
+      <details key="end" value="3407"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateElement/%.5">
+      <details key="start" value="3935"/>
+      <details key="end" value="3936"/>
+      <details key="line" value="127"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateElement/aMicroserviceArchitecture">
+      <details key="start" value="131"/>
+      <details key="end" value="183"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

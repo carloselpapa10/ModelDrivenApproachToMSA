@@ -1,0 +1,97 @@
+[comment encoding = UTF-8 /]
+[module commandHandlerGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+	
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+		[comment commandhandlers + config /]
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/commandhandlers/'+s.fullname+'CommandHandlers.java', false, 'UTF-8')]		
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].commandhandlers;
+
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.common.Channels;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.shortname.toLower()/].api.commands.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.shortname.toLower()/].api.info.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].impl.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import io.eventuate.tram.commands.consumer.CommandHandlers;
+import io.eventuate.tram.commands.consumer.CommandMessage;
+import io.eventuate.tram.messaging.common.Message;
+import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder;
+import static io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withFailure;
+import static io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess;
+import java.util.ArrayList;
+import java.util.List;
+
+public class [s.fullname/]CommandHandlers {
+
+	private static final Logger log = LoggerFactory.getLogger([s.fullname/]CommandHandlers.class);
+
+	[for (model : Model | s.oclAsType(micro::AggregateService).modelEvents.model)]
+	@Autowired
+	private [model.name/]ServiceImpl [model.name.toLower()/]ServiceImpl;
+
+	[/for]
+	public CommandHandlers commandHandlers() {
+		return SagaCommandHandlersBuilder
+				.fromChannel(Channels.[s.fullname.toUpper()/])
+		[if (s.oclAsType(micro::AggregateService).api.oclIsUndefined() = false)]
+			[for (command : Command | s.oclAsType(micro::AggregateService).api.commands)]
+				.onMessage([command.name/].class, this::handle[command.name/])
+			[/for]
+		[/if]
+				.build();
+	}		
+		
+		[if (s.oclAsType(micro::AggregateService).api.oclIsUndefined() = false)]
+			[for (command : Command | s.oclAsType(micro::AggregateService).api.commands)]
+	private Message handle[command.name/](CommandMessage<[command.name/]> cm) {
+		log.info("handle[command.name/]() - [s.fullname/]CommandHandlers - [s.fullname/]");
+		
+		[command.name/] command = cm.getCommand();
+		/*TODO*/
+		[if (command.commandType.toString().equalsIgnoreCase('reply'))]
+		return withSuccess(new [command.replyInfo.name/]Info());
+			[else]
+		return withSuccess();
+		[/if]		
+	}
+
+			[/for]
+		[/if]
+}
+		[/file]
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/commandhandlers/'+s.fullname+'CommandHandlersConfiguration.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].commandhandlers;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import io.eventuate.tram.commands.consumer.CommandDispatcher;
+import io.eventuate.tram.events.publisher.TramEventsPublisherConfiguration;
+import io.eventuate.tram.sagas.participant.SagaCommandDispatcher;
+import io.eventuate.tram.sagas.participant.SagaParticipantConfiguration;
+
+@Configuration
+@Import({ SagaParticipantConfiguration.class, TramEventsPublisherConfiguration.class })
+public class [s.fullname/]CommandHandlersConfiguration {
+
+	@Bean
+	public [s.fullname/]CommandHandlers [s.fullname.at(1).toLower()+s.fullname.substring(2, s.fullname.size())/]CommandHandlers() {
+	    return new [s.fullname/]CommandHandlers();
+	}
+
+	@Bean
+	public CommandDispatcher commandDispatcher([s.fullname/]CommandHandlers [s.fullname.at(1).toLower()+s.fullname.substring(2, s.fullname.size())/]CommandHandlers) {
+	    return new SagaCommandDispatcher("[s.fullname.at(1).toLower()+s.fullname.substring(2, s.fullname.size())/]Dispatcher", [s.fullname.at(1).toLower()+s.fullname.substring(2, s.fullname.size())/]CommandHandlers.commandHandlers());
+	}
+}
+		[/file]
+	[/if]
+[/for]
+[/template]

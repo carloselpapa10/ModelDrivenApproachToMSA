@@ -1,0 +1,104 @@
+[comment encoding = UTF-8 /]
+[module sagaGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+
+[for (s : Service | aMicroserviceArchitecture.services)]
+
+	[if (s.oclIsTypeOf(micro::AggregateService) )]
+
+		[if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->size() > 0 )]
+
+			[for (saga : Saga | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga))]
+				[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/saga/'+saga.name.toLower()+'/'+saga.name+'Saga.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].saga.[saga.name.toLower()/];
+
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].impl.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].proxy.*;
+[for (svc : Service | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga).eAllContents(Step).commands.eContainer().eContainer(AggregateService)->asBag()->intersection(aMicroserviceArchitecture.services->asBag()))]
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[svc.shortname.toLower()/].api.commands.*;	
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[svc.shortname.toLower()/].api.info.*;
+[/for]
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import io.eventuate.tram.sagas.orchestration.SagaDefinition;
+import io.eventuate.tram.sagas.simpledsl.SimpleSaga;
+
+@Component
+public class [saga.name/]Saga implements SimpleSaga<[saga.name/]SagaData>{
+	
+	private static final Logger log = LoggerFactory.getLogger([saga.name/]Saga.class);
+
+	private SagaDefinition<[saga.name/]SagaData> sagaDefinition;
+	
+	public [saga.name/]Saga([for (svc : Service | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga).eAllContents(Step).commands.eContainer().eContainer(AggregateService)->asBag()->intersection(aMicroserviceArchitecture.services->asBag()))][svc.fullname/]Proxy [svc.fullname.at(1).toLower()+svc.fullname.substring(2, svc.fullname.size())/][if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga).eAllContents(Step).commands.eContainer().eContainer(AggregateService)->asBag()->intersection(aMicroserviceArchitecture.services->asBag())->size() > i)], [/if][/for]){
+		
+		this.sagaDefinition =
+				step()					
+					[for (step : Step | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->select(s | s.name.equalsIgnoreCase(saga.name)).Steps)]
+						[if (step.eContainer(Saga).name.equalsIgnoreCase(saga.name))]
+							[for (command : Command | step.commands)]					
+								[if (command.commandType.toString().equalsIgnoreCase('compensate'))]					
+					.withCompensation([command.eContainer().eContainer(AggregateService).fullname.at(1).toLower()+command.eContainer().eContainer(AggregateService).fullname.substring(2, command.eContainer().eContainer(AggregateService).fullname.size())/].[command.name.at(1).toLower()+command.name.substring(2, command.name.size())/], this::make[command.name/])			
+									[elseif (command.commandType.toString().equalsIgnoreCase('invoke'))]
+					.invokeParticipant([command.eContainer().eContainer(AggregateService).fullname.at(1).toLower()+command.eContainer().eContainer(AggregateService).fullname.substring(2, command.eContainer().eContainer(AggregateService).fullname.size())/].[command.name.at(1).toLower()+command.name.substring(2, command.name.size())/], this::make[command.name/])
+									[else]
+					.invokeParticipant([command.eContainer().eContainer(AggregateService).fullname.at(1).toLower()+command.eContainer().eContainer(AggregateService).fullname.substring(2, command.eContainer().eContainer(AggregateService).fullname.size())/].[command.name.at(1).toLower()+command.name.substring(2, command.name.size())/], this::make[command.name/])
+					.onReply([command.replyInfo.name/]Info.class, this::handle[command.name/])				
+								[/if]
+							[/for]
+							[if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->select(s | s.name.equalsIgnoreCase(saga.name)).Steps->size() > i)]
+				.step()
+							[/if]
+						[/if]							
+					[/for]
+				.build();
+	}
+
+	@Override
+	public SagaDefinition<[saga.name/]SagaData> getSagaDefinition() {
+		return sagaDefinition;
+	}
+
+				[for (step : Step | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->select(s | s.name.equalsIgnoreCase(saga.name)).Steps)]
+						[for (command : Command | step.commands)]					
+							[if (command.commandType.toString().equalsIgnoreCase('reply'))]
+	private [command.name/] make[command.name/]([saga.name/]SagaData data) {
+		log.info("make[command.name/]() - [saga.name/]Saga - [s.fullname /]"); 
+		return new [command.name/]();
+	}
+
+	private void handle[command.name/]([saga.name/]SagaData data, [command.replyInfo.name/]Info [command.replyInfo.name.at(1).toLower()+command.replyInfo.name.substring(2, command.replyInfo.name.size())/]Info) {
+		log.info("handle[command.name/]() - [saga.name/]Saga - [s.fullname /]"); 
+	}
+
+								[else]
+	private [command.name/] make[command.name/]([saga.name/]SagaData data) {
+		log.info("make[command.name/]() - [saga.name/]Saga - [s.fullname /]"); 
+		return new [command.name/]();
+	}
+
+							[/if]
+						[/for]										
+				[/for]	
+}
+				[/file]
+				[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/saga/'+saga.name.toLower()+'/'+saga.name+'SagaData.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].saga.[saga.name.toLower()/];
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class [saga.name/]SagaData {
+
+	public [saga.name/]SagaData() {}
+}
+				[/file]
+			[/for]
+		[/if]
+	[/if]
+[/for]
+[/template]

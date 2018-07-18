@@ -1,0 +1,124 @@
+[comment encoding = UTF-8 /]
+[module daoGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+		
+		[for (model : Model | s.oclAsType(micro::AggregateService).modelEvents.model)]
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/dao/'+model.name+'Service.java', false, 'UTF-8')]		
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].dao;
+
+import java.util.List;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.common.BusinessException;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+
+public interface [model.name/]Service {
+
+	[for (operation : Operation | s.oclAsType(micro::AggregateService).operation)]
+		[if (operation.model.name  = model.name)]			
+			[if (operation.operationType.toString() = 'create')]
+	public [model.name/] [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException;				
+			[/if]
+			[if (operation.operationType.toString() = 'update')]
+	public void [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException;			
+			[/if]
+			[if (operation.operationType.toString() = 'delete')]
+	public void [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException;			
+			[/if]
+			[if (operation.operationType.toString() = 'retrieve')]
+	public [model.name/] [operation.name/](String id) throws BusinessException;			
+			[/if]		
+		[/if]
+	[/for]
+	public List<[model.name/]> findAll() throws BusinessException;
+}		   
+			[/file]
+		[/for]
+
+
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/dao/'+s.fullname+'Configuration.java', false, 'UTF-8')]		
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].dao;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import io.eventuate.tram.commands.common.ChannelMapping;
+import io.eventuate.tram.commands.common.DefaultChannelMapping;
+import io.eventuate.tram.events.publisher.TramEventsPublisherConfiguration;
+import io.eventuate.tram.sagas.participant.SagaParticipantConfiguration;
+[if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->size() > 0 )]
+import io.eventuate.tram.sagas.orchestration.SagaManager;
+import io.eventuate.tram.sagas.orchestration.SagaManagerImpl;
+import io.eventuate.tram.sagas.orchestration.SagaOrchestratorConfiguration;
+	[for (saga : Saga | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga))]
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].saga.[saga.name.toLower()/].[saga.name/]Saga;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].saga.[saga.name.toLower()/].[saga.name/]SagaData;
+	[/for]
+[/if]
+
+@Configuration
+@Import({ SagaParticipantConfiguration.class, TramEventsPublisherConfiguration.class[if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->size() > 0 )], SagaOrchestratorConfiguration.class[/if] })
+public class [s.fullname/]Configuration {
+
+	@Bean
+	public ChannelMapping channelMapping() {
+	    return new DefaultChannelMapping.DefaultChannelMappingBuilder().build();
+	}
+
+	[if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->size() > 0 )]
+		[for (saga : Saga | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga))]
+	@Bean
+	public SagaManager<[saga.name/]SagaData> [saga.name.at(1).toLower()+saga.name.substring(2, saga.name.size())/]SagaManager([saga.name/]Saga saga){
+		return new SagaManagerImpl<>(saga);
+	}
+
+		[/for]
+	[/if]	
+}
+		
+		[/file]
+		[else]
+		
+			[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.models->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+
+				[if (s.oclAsType(micro::ViewService).replicateServices.modelEvents.model->select(e | e.name.toString().equalsIgnoreCase(model.name))->size() > 0)]
+					
+					[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/dao/'+model.name+'Service.java', false, 'UTF-8')]					
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].dao;
+
+import java.util.List;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.common.BusinessException;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+
+public interface [model.name/]Service {
+
+	[for (operation : Operation | s.oclAsType(micro::ViewService).replicateServices.operation->select(m | m.model.name.toString().equalsIgnoreCase(model.name)))]
+		[if (operation.model.name  = model.name)]			
+			[if (operation.operationType.toString() = 'create')]
+	public [model.name/] [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException;				
+			[/if]
+			[if (operation.operationType.toString() = 'update')]
+	public void [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException;			
+			[/if]
+			[if (operation.operationType.toString() = 'delete')]
+	public void [operation.name/](String id) throws BusinessException;			
+			[/if]
+			[if (operation.operationType.toString() = 'retrieve')]
+	public [model.name/] [operation.name/](String id) throws BusinessException;			
+			[/if]		
+		[/if]
+	[/for]
+	public List<[model.name/]> findAll() throws BusinessException;
+
+}	
+					[/file]
+				[/if]
+			[/for]
+	[/if]
+[/for]
+
+[/template]

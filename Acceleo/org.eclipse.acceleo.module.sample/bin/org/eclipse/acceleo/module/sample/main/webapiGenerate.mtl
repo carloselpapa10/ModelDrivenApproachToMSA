@@ -1,0 +1,43 @@
+[comment encoding = UTF-8 /]
+[module webapiGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+	
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+		[for (model : Model | s.models)]
+	
+			[for (operation : Operation | s.oclAsType(micro::AggregateService).operation)]
+				[if (operation.model.name  = model.name)]
+				
+					[if (operation.operationType.toString() = 'create')]
+				
+						[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/webapi/'+operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())+'Request.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].webapi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())/]Request {
+
+	public [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())/]Request() {}
+}
+						[/file]
+
+						[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/webapi/'+operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())+'Response.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].webapi;
+
+public class [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())/]Response {
+	
+	public [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())/]Response() {}
+}
+						[/file]
+					[/if]
+				[/if]
+			[/for]
+		[/for]
+	[/if]
+[/for]
+[/template]

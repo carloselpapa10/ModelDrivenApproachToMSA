@@ -1,0 +1,231 @@
+[comment encoding = UTF-8 /]
+[module implGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+		[for (model : Model | s.oclAsType(micro::AggregateService).modelEvents.model)]
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/impl/'+model.name+'ServiceImpl.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].impl;
+
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.common.BusinessException;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.shortname.toLower()/].api.events.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.shortname.toLower()/].api.info.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].dao.[model.name/]Service;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static java.util.Collections.singletonList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import io.eventuate.tram.events.aggregates.ResultWithDomainEvents;
+[for (saga : Saga | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga))]
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].saga.[saga.name.toLower()/].[saga.name/]SagaData;
+[/for]
+[if (s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga)->size() > 0)]
+import io.eventuate.tram.sagas.orchestration.SagaManager;
+[/if]
+
+@Component
+@Transactional
+public class [model.name/]ServiceImpl implements [model.name/]Service{
+
+	private static final Logger log = LoggerFactory.getLogger([model.name/]ServiceImpl.class);
+
+	@Autowired
+	private [model.name/]Repository [model.name.toLower()/]Repository;
+	
+	@Autowired
+	private [model.name/]DomainEventPublisher [model.name.toLower()/]AggregateEventPublisher;
+
+	[for (saga : Saga | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga))]
+	@Autowired
+	private SagaManager<[saga.name/]SagaData> [saga.name.at(1).toLower()+saga.name.substring(2, saga.name.size())/]SagaManager;
+
+	[/for]
+	[for (operation : Operation | s.oclAsType(micro::AggregateService).operation)]
+		[if (operation.model.name  = model.name)]			
+			[if (operation.operationType.toString() = 'create')]
+	@Override
+	public [model.name/] [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/]([model.name/] [model.name.toLower()/]) - [model.name/]ServiceImpl - [s.fullname/]");
+		
+		[if (operation.publish.name.oclIsInvalid() = false)]
+		List<[model.name/]DomainEvent> events = singletonList(new [operation.publish.name/]());
+		ResultWithDomainEvents<[model.name/], [model.name/]DomainEvent> [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]AndEvents = new ResultWithDomainEvents<>([model.name.toLower()/], events);		
+		
+		[/if]
+		[model.name.toLower()/] = [model.name.toLower()/]Repository.save([model.name.toLower()/]);
+		[if (operation.publish.name.oclIsInvalid() = false)]
+		[model.name.toLower()/]AggregateEventPublisher.publish([model.name.toLower()/], [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]AndEvents.events);
+		[/if]
+
+		[comment SAGA condition /]
+		[if (operation.Saga.name.oclIsInvalid() = false)]
+		[operation.Saga.name/]SagaData data = new [operation.Saga.name/]SagaData();
+		[operation.Saga.name.at(1).toLower()+operation.Saga.name.substring(2, operation.Saga.name.size())/]SagaManager.create(data, [model.name/].class, [model.name.toLower()/].get[for (attribute : Attribute | model.attributes)][if (attribute.isId)][attribute.name/]()[/if][/for]);
+		
+		[/if]
+		return [model.name.toLower()/];
+	}
+				
+			[/if]
+			[if (operation.operationType.toString() = 'update')]
+	@Override
+	public void [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/]([model.name/] [model.name.toLower()/]) - [model.name/]ServiceImpl - [s.fullname/]");
+
+		[if (operation.publish.name.oclIsInvalid() = false)]
+		List<[model.name/]DomainEvent> events = singletonList(new [operation.publish.name/]());
+		ResultWithDomainEvents<[model.name/], [model.name/]DomainEvent> [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]AndEvents = new ResultWithDomainEvents<>([model.name.toLower()/], events);		
+		[model.name.toLower()/]AggregateEventPublisher.publish([model.name.toLower()/], [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]AndEvents.events);
+
+		[/if]
+		[comment SAGA condition /]
+		[if (operation.Saga.name.oclIsInvalid() = false)]
+		[operation.Saga.name/]SagaData data = new [operation.Saga.name/]SagaData();
+		[operation.Saga.name.at(1).toLower()+operation.Saga.name.substring(2, operation.Saga.name.size())/]SagaManager.create(data);
+		
+		[/if]
+	}
+			
+			[/if]
+			[if (operation.operationType.toString() = 'delete')]
+	@Override
+	public void [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/]([model.name/] [model.name.toLower()/]) - [model.name/]ServiceImpl - [s.fullname/]");
+		
+		[if (operation.publish.name.oclIsInvalid() = false)]
+		List<[model.name/]DomainEvent> events = singletonList(new [operation.publish.name/]());
+		ResultWithDomainEvents<[model.name/], [model.name/]DomainEvent> [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]AndEvents = new ResultWithDomainEvents<>([model.name.toLower()/], events);
+		
+		[/if]		
+		[comment SAGA condition /]
+		[if (operation.Saga.name.oclIsInvalid() = false)]
+		[operation.Saga.name/]SagaData data = new [operation.Saga.name/]SagaData();
+		[operation.Saga.name.at(1).toLower()+operation.Saga.name.substring(2, operation.Saga.name.size())/]SagaManager.create(data);
+			[else]
+		[model.name.toLower()/]Repository.delete([model.name.toLower()/]);
+		[/if]
+		[if (operation.publish.name.oclIsInvalid() = false)]
+		[model.name.toLower()/]AggregateEventPublisher.publish([model.name.toLower()/], [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]AndEvents.events);
+		
+		[/if]
+	}
+			
+			[/if]
+			[if (operation.operationType.toString() = 'retrieve')]
+	@Override
+	public [model.name/] [operation.name/](String id) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/](String id) - [model.name/]ServiceImpl - [s.fullname/]");
+		return null;
+	}
+			
+			[/if]		
+		[/if]
+	[/for]
+	@Override
+	public List<[model.name/]> findAll() throws BusinessException{
+		log.info("findAll() - [model.name/]ServiceImpl - [s.fullname/]");
+		return [model.name.toLower()/]Repository.findAll();
+	}
+	
+}
+			[/file]
+		[/for]
+		[else]
+			
+			[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.models->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+		
+				[if (s.oclAsType(micro::ViewService).replicateServices.modelEvents.model->select(e | e.name.toString().equalsIgnoreCase(model.name))->size() > 0)]
+			
+					[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/impl/'+model.name+'ServiceImpl.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].impl;
+
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.common.BusinessException;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(Service).shortname.toLower()/].api.events.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(Service).shortname.toLower()/].api.info.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].dao.[model.name/]Service;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static java.util.Collections.singletonList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import io.eventuate.tram.events.aggregates.ResultWithDomainEvents;
+
+@Component
+@Transactional
+public class [model.name/]ServiceImpl implements [model.name/]Service{
+
+	private static final Logger log = LoggerFactory.getLogger([model.name/]ServiceImpl.class);
+
+	@Autowired
+	private [model.name/]Repository [model.name.toLower()/]Repository;
+
+	[for (operation : Operation | s.oclAsType(micro::ViewService).replicateServices.operation->select(m | m.model.name.toString().equalsIgnoreCase(model.name)))]
+		[if (operation.model.name  = model.name)]			
+			[if (operation.operationType.toString() = 'create')]
+	@Override
+	public [model.name/] [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/]([model.name/] [model.name.toLower()/]) - [model.name/]ServiceImpl - [s.fullname/]");
+		return [model.name.toLower()/];
+	}
+				
+			[/if]
+			[if (operation.operationType.toString() = 'update')]
+	@Override
+	public void [operation.name/]([model.name/] [model.name.toLower()/]) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/]([model.name/] [model.name.toLower()/]) - [model.name/]ServiceImpl - [s.fullname/]");
+	}
+			
+			[/if]
+			[if (operation.operationType.toString() = 'delete')]
+	@Override
+	public void [operation.name/](String id) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/](String id) - [model.name/]ServiceImpl - [s.fullname/]");
+	}
+			
+			[/if]
+			[if (operation.operationType.toString() = 'retrieve')]
+	@Override
+	public [model.name/] [operation.name/](String id) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("[operation.name/](String id) - [model.name/]ServiceImpl - [s.fullname/]");
+		return null;
+	}
+			
+			[/if]		
+		[/if]
+	[/for]
+	@Override
+	public List<[model.name/]> findAll() throws BusinessException{
+		log.info("findAll() - [model.name/]ServiceImpl - [s.fullname/]");
+		return [model.name.toLower()/]Repository.findAll();
+	}
+
+}
+					[/file]
+				[/if]
+			[/for]
+	[/if]
+[/for]
+[/template]

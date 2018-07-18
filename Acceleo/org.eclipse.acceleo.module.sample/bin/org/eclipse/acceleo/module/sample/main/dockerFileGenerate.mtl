@@ -1,0 +1,19 @@
+[comment encoding = UTF-8 /]
+[module dockerFileGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+
+	[file (s.name+'/src/main/docker/Dockerfile', false, 'UTF-8')]
+FROM java:8
+MAINTAINER c.avendano10@gmail.com
+VOLUME /tmp
+ADD [s.name /].jar app.jar
+RUN bash -c 'touch /app.jar'
+ENTRYPOINT ['['/]"java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=container","-jar","/app.jar"[']' /]
+	[/file]
+[/for]
+
+[/template]

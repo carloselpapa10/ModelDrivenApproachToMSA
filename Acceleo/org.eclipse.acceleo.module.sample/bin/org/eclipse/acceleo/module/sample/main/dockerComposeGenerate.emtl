@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="dockerComposeGenerate" nsURI="org::eclipse::acceleo::module::sample::main::dockerComposeGenerate" startHeaderPosition="29" endHeaderPosition="194">
+    <input>
+      <takesTypesFrom href="http://it.univa.disim.micro#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateElement" visibility="Public" main="true">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="version: '3'&#xA;&#xA;services:&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  &#xA;  "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/%.1/s">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=":&#xA;    image: "/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/%.1/s">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;    container_name: "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/%.1/s">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;    ports:&#xA;      - "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/%.1/s">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/port"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=":8080&#xA;    links:&#xA;      - mysql&#xA;      - kafka&#xA;      - zookeeper&#xA;      - cdcservice&#xA;    environment:&#xA;      SPRING_DATASOURCE_URL: jdbc:mysql://mysql/eventuate&#xA;      SPRING_DATASOURCE_USERNAME: mysqluser&#xA;      SPRING_DATASOURCE_PASSWORD: mysqlpw&#xA;      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.jdbc.Driver&#xA;      SPRING_DATASOURCE_TIMEOUT: 10000&#xA;      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092&#xA;      EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: zookeeper:2181&#xA;      MONGODB: mongodb:27017/"/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/%.1/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="db&#xA;"/>
+          <loopVariable name="s">
+            <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Service)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//MicroserviceArchitecture/services"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="  &#xA;  zookeeper:&#xA;    image: eventuateio/eventuateio-local-zookeeper:0.14.0&#xA;&#x9;container_name: zookeeper&#xA;    ports:&#xA;      - 2181:2181&#xA;      - 2888:2888&#xA;      - 3888:3888&#xA;&#xA;  kafka:&#xA;    image: eventuateio/eventuateio-local-kafka:0.14.0&#xA;&#x9;container_name: kafka&#xA;    ports:&#xA;      - 9092:9092&#xA;    links:&#xA;      - zookeeper&#xA;    environment:&#xA;      - ADVERTISED_HOST_NAME=${DOCKER_HOST_IP}&#xA;      - KAFKA_HEAP_OPTS=-Xmx320m -Xms320m&#xA;      - ZOOKEEPER_SERVERS=zookeeper:2181&#xA;&#xA;  mysql:&#xA;    image: eventuateio/eventuate-tram-sagas-mysql:0.3.0.RELEASE&#xA;&#x9;container_name: mysql&#xA;    ports:&#xA;      - 3306:3306&#xA;    environment:&#xA;      - MYSQL_ROOT_PASSWORD=rootpassword&#xA;      - MYSQL_USER=mysqluser&#xA;      - MYSQL_PASSWORD=mysqlpw&#xA;&#xA;  cdcservice:&#xA;    image: eventuateio/eventuate-tram-cdc-mysql-service:0.3.0.RELEASE&#xA;&#x9;container_name: cdcservice&#xA;    ports:&#xA;      - &quot;8099:8080&quot;&#xA;    links:&#xA;      - mysql&#xA;      - kafka&#xA;      - zookeeper&#xA;    environment:&#xA;      SPRING_DATASOURCE_URL: jdbc:mysql://mysql/eventuate&#xA;      SPRING_DATASOURCE_USERNAME: mysqluser&#xA;      SPRING_DATASOURCE_PASSWORD: mysqlpw&#xA;      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.jdbc.Driver&#xA;      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092&#xA;      EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: zookeeper:2181&#xA;      EVENTUATELOCAL_CDC_DB_USER_NAME: root&#xA;      EVENTUATELOCAL_CDC_DB_PASSWORD: rootpassword&#xA;      EVENTUATELOCAL_CDC_BINLOG_CLIENT_ID: 1234567890&#xA;&#xA;  mongodb:&#xA;    image: mongo:3.0.15&#xA;    container_name: mongodb&#xA;    environment:&#xA;      - MONGO_DATA_DIR=/data/db&#xA;      - MONGO_LOG_DIR=/dev/null&#xA;    volumes:&#xA;      - ./data/db:/data/db1&#xA;    ports:&#xA;      - 27017:27017&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="docker-compose.yml">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="aMicroserviceArchitecture">
+        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateElement"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aMicroserviceArchitecture">
+          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="micro_MicroserviceArchitecture_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Service)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateElement">
+      <details key="start" value="92"/>
+      <details key="end" value="2632"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateElement/%">
+      <details key="start" value="197"/>
+      <details key="end" value="2620"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateElement/%/%">
+      <details key="start" value="243"/>
+      <details key="end" value="267"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateElement/%/%.1">
+      <details key="start" value="268"/>
+      <details key="end" value="995"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateElement/%/%.1/%">
+      <details key="start" value="325"/>
+      <details key="end" value="330"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateElement/%/%.1/%.1">
+      <details key="start" value="331"/>
+      <details key="end" value="337"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateElement/%/%.1/%.1/s">
+      <details key="start" value="331"/>
+      <details key="end" value="332"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateElement/%/%.1/%.2">
+      <details key="start" value="339"/>
+      <details key="end" value="352"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateElement/%/%.1/%.3">
+      <details key="start" value="353"/>
+      <details key="end" value="393"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateElement/%/%.1/%.3/%">
+      <details key="start" value="353"/>
+      <details key="end" value="383"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateElement/%/%.1/%.3/%/aMicroserviceArchitecture">
+      <details key="start" value="353"/>
+      <details key="end" value="378"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateElement/%/%.1/%.4">
+      <details key="start" value="395"/>
+      <details key="end" value="396"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateElement/%/%.1/%.5">
+      <details key="start" value="397"/>
+      <details key="end" value="403"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateElement/%/%.1/%.5/s">
+      <details key="start" value="397"/>
+      <details key="end" value="398"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateElement/%/%.1/%.6">
+      <details key="start" value="405"/>
+      <details key="end" value="426"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateElement/%/%.1/%.7">
+      <details key="start" value="427"/>
+      <details key="end" value="433"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateElement/%/%.1/%.7/s">
+      <details key="start" value="427"/>
+      <details key="end" value="428"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateElement/%/%.1/%.8">
+      <details key="start" value="435"/>
+      <details key="end" value="455"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateElement/%/%.1/%.9">
+      <details key="start" value="456"/>
+      <details key="end" value="462"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateElement/%/%.1/%.9/s">
+      <details key="start" value="456"/>
+      <details key="end" value="457"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateElement/%/%.1/%.10">
+      <details key="start" value="464"/>
+      <details key="end" value="962"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateElement/%/%.1/%.11">
+      <details key="start" value="963"/>
+      <details key="end" value="983"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateElement/%/%.1/%.11/%">
+      <details key="start" value="963"/>
+      <details key="end" value="973"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateElement/%/%.1/%.11/%/s">
+      <details key="start" value="963"/>
+      <details key="end" value="964"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateElement/%/%.1/%.12">
+      <details key="start" value="985"/>
+      <details key="end" value="988"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateElement/%/%.1/s">
+      <details key="start" value="274"/>
+      <details key="end" value="285"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateElement/%/%.1/%.13">
+      <details key="start" value="288"/>
+      <details key="end" value="322"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateElement/%/%.1/%.13/aMicroserviceArchitecture">
+      <details key="start" value="288"/>
+      <details key="end" value="313"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateElement/%/%.2">
+      <details key="start" value="996"/>
+      <details key="end" value="2613"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateElement/%/%.3">
+      <details key="start" value="204"/>
+      <details key="end" value="224"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateElement/%/%.4">
+      <details key="start" value="233"/>
+      <details key="end" value="240"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateElement/aMicroserviceArchitecture">
+      <details key="start" value="125"/>
+      <details key="end" value="177"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

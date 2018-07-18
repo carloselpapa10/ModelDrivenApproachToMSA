@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/it.univaq.disim.micro_arc/src" modelPluginID="it.univaq.disim.micro_arc"
+    modelName="MicroArch" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>microArch.ecore</foreignModel>
+  <genPackages prefix="Micro" disposableProviderFactory="true" ecorePackage="microArch.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="microArch.ecore#//CRUDOperation">
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CRUDOperation/create"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CRUDOperation/update"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CRUDOperation/delete"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CRUDOperation/retrieve"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="microArch.ecore#//CommandType">
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CommandType/compensate"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CommandType/invoke"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//CommandType/reply"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="microArch.ecore#//AttributePrimitiveValue">
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/String"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/int"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/char"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/float"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/long"/>
+      <genEnumLiterals ecoreEnumLiteral="microArch.ecore#//AttributePrimitiveValue/short"/>
+    </genEnums>
+    <genClasses ecoreClass="microArch.ecore#//MicroserviceArchitecture">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//MicroserviceArchitecture/services"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//MicroserviceArchitecture/models"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="microArch.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Service/fullname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Service/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Service/shortname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Service/port"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//Model/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//ModelEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//ModelEvent/model"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference microArch.ecore#//ModelEvent/aggregateService"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//AggregateService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//AggregateService/modelEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//AggregateService/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//AggregateService/api"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//AggregateService/handleModelEvents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//AggregateService/models"/>
+      <genOperations ecoreOperation="microArch.ecore#//AggregateService/ReferenceModelsIncluded"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//ViewService">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//ViewService/replicateServices"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Operation/operationType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//Operation/publish"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//Operation/Saga"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//Operation/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Operation/isMethodController"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference microArch.ecore#//Operation/aggregateService"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//API">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//API/events"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//API/commands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//API/infos"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Command">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Command/commandType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//Command/replyInfo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Command/isReplyInfoMany"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference microArch.ecore#//Command/api"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Event">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference microArch.ecore#//Event/api"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Info">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//Info/dto"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference microArch.ecore#//Info/api"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Step">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//Step/commands"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Saga">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//Saga/Steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference microArch.ecore#//Saga/Data"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//Data"/>
+    <genClasses image="false" ecoreClass="microArch.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Attribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Attribute/isMany"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Attribute/isId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//Attribute/isGenerated"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference microArch.ecore#//Attribute/model"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//ReferenceAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//ReferenceAttribute/type"/>
+    </genClasses>
+    <genClasses ecoreClass="microArch.ecore#//PrimitiveTypeAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute microArch.ecore#//PrimitiveTypeAttribute/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference microArch.ecore#//PrimitiveTypeAttribute/ModelToView"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

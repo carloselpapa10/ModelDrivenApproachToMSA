@@ -1,0 +1,54 @@
+[comment encoding = UTF-8 /]
+[module proxyGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+
+		[for (it : String | s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga).eAllContents(Step).commands.eContainer().eContainer(AggregateService).name->asBag()->intersection(aMicroserviceArchitecture.services.name->asBag()))]
+
+			[for (svc : Service | aMicroserviceArchitecture.services)]
+
+				[if (svc.name.equalsIgnoreCase(it))]
+
+					[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/proxy/'+svc.fullname+'Proxy.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].proxy;
+
+import org.springframework.stereotype.Component;
+import io.eventuate.tram.sagas.simpledsl.CommandEndpoint;
+import io.eventuate.tram.sagas.simpledsl.CommandEndpointBuilder;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.common.Channels;
+import io.eventuate.tram.commands.common.Success;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[svc.shortname.toLower()/].api.commands.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[svc.shortname.toLower()/].api.info.*;
+
+@Component
+public class [svc.fullname/]Proxy {
+
+						[for (command : Command | svc.oclAsType(micro::AggregateService).api.commands->asBag()->intersection(s.oclAsType(micro::AggregateService).eAllContents(Operation).eAllContents(Saga).eAllContents(Step).commands->asBag()))]
+							[if (command.commandType.toString().equalsIgnoreCase('reply'))]
+	public final CommandEndpoint<[command.name/]> [command.name.at(1).toLower()+command.name.substring(2, command.name.size())/] = CommandEndpointBuilder
+								.forCommand([command.name/].class)
+								.withChannel(Channels.[svc.fullname.toUpper()/])
+								.withReply([command.replyInfo.name/]Info.class)
+								.build();								
+								[else]
+	public final CommandEndpoint<[command.name/]> [command.name.at(1).toLower()+command.name.substring(2, command.name.size())/] = CommandEndpointBuilder
+								.forCommand([command.name/].class)
+								.withChannel(Channels.[svc.fullname.toUpper()/])
+								.withReply(Success.class)
+								.build();			
+							[/if]
+
+						[/for]
+}					
+					[/file]
+				[/if]
+			[/for]
+		[/for]	
+	[/if]
+[/for]
+[/template]

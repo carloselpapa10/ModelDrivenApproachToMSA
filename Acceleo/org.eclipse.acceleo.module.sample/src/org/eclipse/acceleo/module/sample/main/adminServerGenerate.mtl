@@ -1,0 +1,175 @@
+[comment encoding = UTF-8 /]
+[module adminServerGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[file (aMicroserviceArchitecture.name.toLower()+'-admin/pom.xml', false, 'UTF-8')]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+  
+  <groupId>org.[aMicroserviceArchitecture.name.toLower()/]</groupId>
+  <artifactId>admin</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>[aMicroserviceArchitecture.name.toLower()/]-admin</name>
+  <description>Test project using Spring Boot</description>
+  
+  <parent>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-parent</artifactId>
+	    <version>1.4.0.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+	        <groupId>de.codecentric</groupId>
+	        <artifactId>spring-boot-admin-server</artifactId>
+	        <version>1.4.1</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>de.codecentric</groupId>
+	        <artifactId>spring-boot-admin-server-ui</artifactId>
+	        <version>1.4.1</version>
+	    </dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.springframework.cloud</groupId>
+	            <artifactId>spring-cloud-dependencies</artifactId>
+	            <version>Brixton.SR4</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+
+	<build>
+		<finalName>[aMicroserviceArchitecture.name.toLower()/]-admin</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-eclipse-plugin</artifactId>
+			    <version>2.7</version>  
+			    <configuration>
+			        <downloadSources>true</downloadSources>
+			        <downloadJavadocs>false</downloadJavadocs>
+			        <wtpversion>2.0</wtpversion>
+			        <additionalBuildcommands>
+			            <buildCommand>
+			                <name>org.springframework.ide.eclipse.core.springbuilder</name>
+			            </buildCommand>
+			        </additionalBuildcommands>
+			        <additionalProjectnatures>
+			            <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+			        </additionalProjectnatures>
+			    </configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<configuration>
+					<skipDockerBuild>true</skipDockerBuild>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+[/file]
+
+[file (aMicroserviceArchitecture.name.toLower()+'-admin/Dockerfile', false, 'UTF-8')]
+FROM openjdk:8-jdk-alpine
+MAINTAINER c.avendano10@gmail.com
+CMD java ${JAVA_OPTS} -jar [aMicroserviceArchitecture.name.toLower()/]-admin.jar
+COPY target/[aMicroserviceArchitecture.name.toLower()/]-admin.jar .
+[/file]
+
+[file (aMicroserviceArchitecture.name.toLower()+'-admin/src/main/resources/application.properties', false, 'UTF-8')]
+spring.application.name=Admin-Server
+server.port=8080
+management.security.enabled=false
+security.user.name=admin
+security.user.password=admin
+[/file]
+
+[file (aMicroserviceArchitecture.name.toLower()+'-admin/src/main/java/config/WebSecurityConfig.java', false, 'UTF-8')]
+package config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@Configuration
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+	@Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+          .formLogin()
+          .loginPage("/login.html")
+          .loginProcessingUrl("/login")
+          .permitAll();
+        http
+          .logout()
+          .logoutUrl("/logout");
+        http
+          .csrf()
+          .disable();
+        http
+          .authorizeRequests()
+          .antMatchers("/login.html", "/**/*.css", "/img/**", "/third-party/**")
+          .permitAll();
+        http
+          .authorizeRequests()
+          .antMatchers("/**")
+          .authenticated();
+        http.httpBasic();
+    }
+}
+[/file]
+
+[file (aMicroserviceArchitecture.name.toLower()+'-admin/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/AdminApplication.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/];
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import de.codecentric.boot.admin.config.EnableAdminServer;
+
+@EnableAdminServer
+@SpringBootApplication
+public class AdminApplication {
+
+	public static void main(String['['/][']'/] args) {
+		SpringApplication.run(AdminApplication.class, args);
+	}
+	
+}
+
+[/file]
+[/template]

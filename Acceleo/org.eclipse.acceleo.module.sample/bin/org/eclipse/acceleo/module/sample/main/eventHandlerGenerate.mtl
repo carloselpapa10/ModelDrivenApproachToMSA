@@ -1,0 +1,138 @@
+[comment encoding = UTF-8 /]
+[module eventHandlerGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+
+[for (s : Service | aMicroserviceArchitecture.services)]
+
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+
+		[if (s.oclAsType(micro::AggregateService).handleModelEvents->size() > 0)]
+			
+			[for (modelEvent : ModelEvent | s.oclAsType(micro::AggregateService).handleModelEvents)]
+				[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/messaging/'+modelEvent.model.name+'HistoryEventHandlers.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].messaging;
+
+import org.springframework.stereotype.Component;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[modelEvent.eContainer(AggregateService).shortname.toLower()/].api.events.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import io.eventuate.tram.events.subscriber.DomainEventEnvelope;
+import io.eventuate.tram.events.subscriber.DomainEventHandlers;
+import io.eventuate.tram.events.subscriber.DomainEventHandlersBuilder;
+
+@Component
+public class [modelEvent.model.name/]HistoryEventHandlers {
+	
+	private static final Logger log = LoggerFactory.getLogger([modelEvent.model.name/]HistoryEventHandlers.class);
+
+	public DomainEventHandlers domainEventHandlers() {
+		return DomainEventHandlersBuilder
+				.forAggregateType("org.[aMicroserviceArchitecture.name.toLower()/].[modelEvent.eContainer(AggregateService).fullname.toLower()/].model.[modelEvent.model.name/]")
+					[if (modelEvent.eContainer(AggregateService).api.oclIsUndefined() = false and modelEvent.eContainer(AggregateService).api.events->size() > 0)]
+						[for (event : Event | modelEvent.eContainer(AggregateService).api.events)]
+				.onEvent([event.name/].class, this::handle[event.name/])
+						[/for]				
+					[/if]		
+				.build();
+	}
+
+					[if (modelEvent.eContainer(AggregateService).api.oclIsUndefined() = false and modelEvent.eContainer(AggregateService).api.events->size() > 0)]
+						[for (event : Event | modelEvent.eContainer(AggregateService).api.events)]
+	private void handle[event.name/](DomainEventEnvelope<[event.name/]> dee) {
+		log.info("handle[event.name/]() - [modelEvent.model.name/]HistoryEventHandlers - [modelEvent.eContainer(AggregateService).fullname/]");
+	}
+
+						[/for]				
+					[/if]
+}
+				[/file]
+			[/for]
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/messaging/EventHandlersConfiguration.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].messaging;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import io.eventuate.tram.events.subscriber.DomainEventDispatcher;
+import io.eventuate.tram.messaging.consumer.MessageConsumer;
+
+@Configuration
+public class EventHandlersConfiguration {
+			
+				[for (modelEvent : ModelEvent | s.oclAsType(micro::AggregateService).handleModelEvents)]
+	@Bean
+	public DomainEventDispatcher [modelEvent.model.name.at(1).toLower()+modelEvent.model.name.substring(2, modelEvent.model.name.size())/]HistoryDomainEventDispatcher([modelEvent.model.name/]HistoryEventHandlers [modelEvent.model.name.at(1).toLower()+modelEvent.model.name.substring(2, modelEvent.model.name.size())/]HistoryEventHandlers, MessageConsumer messageConsumer) {
+		return new DomainEventDispatcher("[modelEvent.model.name.at(1).toLower()+modelEvent.model.name.substring(2, modelEvent.model.name.size())/]HistoryDomainEventDispatcher", [modelEvent.model.name.at(1).toLower()+modelEvent.model.name.substring(2, modelEvent.model.name.size())/]HistoryEventHandlers.domainEventHandlers(), messageConsumer);
+	}
+
+				[/for]
+}
+			[/file]
+		[/if]
+		[else]
+
+			[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent).model->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+				
+				[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/messaging/'+model.name+'HistoryEventHandlers.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].messaging;
+
+import org.springframework.stereotype.Component;
+import org.[aMicroserviceArchitecture.name.toLower()/].servicemodel.[s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(Service).shortname.toLower()/].api.events.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import io.eventuate.tram.events.subscriber.DomainEventEnvelope;
+import io.eventuate.tram.events.subscriber.DomainEventHandlers;
+import io.eventuate.tram.events.subscriber.DomainEventHandlersBuilder;	
+
+@Component
+public class [model.name/]HistoryEventHandlers {
+	
+	private static final Logger log = LoggerFactory.getLogger([model.name/]HistoryEventHandlers.class);
+
+	public DomainEventHandlers domainEventHandlers() {
+		return DomainEventHandlersBuilder
+				.forAggregateType("org.[aMicroserviceArchitecture.name.toLower()/].[s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(Service).fullname.toLower()/].model.[model.name/]")
+					[if (s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(AggregateService).api.events->size() > 0)]
+						[for (event : Event | s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(AggregateService).api.events)]
+				.onEvent([event.name/].class, this::handle[event.name/])
+						[/for]				
+					[/if]		
+				.build();
+	}
+
+					[if (s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(AggregateService).api.events->size() > 0)]
+						[for (event : Event | s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(AggregateService).api.events)]
+	private void handle[event.name/](DomainEventEnvelope<[event.name/]> dee) {
+		log.info("handle[event.name/]() - [model.name/]HistoryEventHandlers - [s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent)->select(e | e.model.name.toString().equalsIgnoreCase(model.name)).eContainer(AggregateService).fullname/]");
+	}
+
+						[/for]				
+					[/if]
+}
+				[/file]
+			[/for]	
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/messaging/EventHandlersConfiguration.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].messaging;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import io.eventuate.tram.events.subscriber.DomainEventDispatcher;
+import io.eventuate.tram.messaging.consumer.MessageConsumer;
+
+@Configuration
+public class EventHandlersConfiguration {
+
+			[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.eAllContents(ModelEvent).model->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+	@Bean
+	public DomainEventDispatcher [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]HistoryDomainEventDispatcher([model.name/]HistoryEventHandlers [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]HistoryEventHandlers, MessageConsumer messageConsumer) {
+		return new DomainEventDispatcher("[model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]HistoryDomainEventDispatcher", [model.name.at(1).toLower()+model.name.substring(2, model.name.size())/]HistoryEventHandlers.domainEventHandlers(), messageConsumer);
+	}			
+
+			[/for]
+}			
+			[/file]
+	[/if]
+[/for]
+[/template]

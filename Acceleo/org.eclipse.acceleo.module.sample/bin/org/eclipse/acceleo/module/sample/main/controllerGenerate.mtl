@@ -1,0 +1,139 @@
+[comment encoding = UTF-8 /]
+[module controllerGenerate('http://it.univa.disim.micro')]
+
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[for (s : Service | aMicroserviceArchitecture.services)]
+
+	[if (s.oclIsTypeOf(micro::AggregateService))]
+		[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/controller/'+s.fullname+'Controller.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].controller;
+
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].impl.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].webapi.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@RestController
+public class [s.fullname/]Controller {
+
+	private static final Logger log = LoggerFactory.getLogger([s.fullname/]Controller.class);
+
+			[for (model : Model | s.oclAsType(micro::AggregateService).modelEvents.model)]
+	@Autowired
+	private [model.name/]ServiceImpl [model.name.toLower()/]ServiceImpl;
+
+			[/for]
+			[for (model : Model | s.oclAsType(micro::AggregateService).modelEvents.model)]
+				[for (operation : Operation | s.oclAsType(micro::AggregateService).operation)]
+					[if (operation.model.name  = model.name and operation.isMethodController)]			
+						[if (operation.operationType.toString() = 'create')]
+	@PostMapping("/[model.name.toLower()/]")
+	public [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())  /]Response [operation.name/](@RequestBody [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())  /]Request [operation.name/]Request){
+		log.info("[operation.name/](@RequestBody [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())  /]Request [operation.name/]Request) - [s.fullname/]Controller - [s.fullname/]");
+		
+		/*TODO*/
+		return new [operation.name.at(1).toUpper()+operation.name.substring(2, operation.name.size())  /]Response();
+	}
+			
+						[/if]
+						[if (operation.operationType.toString() = 'update')]
+	@PutMapping("/update/[model.name.toLower()/]")
+	public ResponseEntity<[model.name/]> [operation.name/](@RequestBody [model.name/] [model.name.toLower()/]){
+		log.info("[operation.name/](@RequestBody [model.name/] [model.name.toLower()/]) - [s.fullname/]Controller - [s.fullname/]");
+
+		/*TODO*/
+		return null;
+	}
+ 			
+						[/if]
+						[if (operation.operationType.toString() = 'delete')]
+	@DeleteMapping("/delete/{[model.name.toLower()/]Id}")
+	public String [operation.name/](String id){
+		log.info("[operation.name/](String id) - [s.fullname/]Controller - [s.fullname/]");
+
+		/*TODO*/
+		return null;
+	} 
+			
+						[/if]
+						[if (operation.operationType.toString() = 'retrieve')]
+	@GetMapping("/retrieve/{[model.name.toLower()/]Id}")
+	public [model.name/] [operation.name/](String id){
+		log.info("[operation.name/](String id) - [s.fullname/]Controller - [s.fullname/]");
+		
+		/*TODO*/
+		return null;
+	} 			
+
+						[/if]		
+					[/if]
+				[/for] 
+	@GetMapping("/retrieve/[model.name/]s")
+	public List<[model.name/]> findAll[model.name/]s(){
+		/*Auto-Generated*/
+		log.info("findAll() - [s.fullname/]Controller - [s.fullname/]");
+		return [model.name.toLower()/]ServiceImpl.findAll();
+	}
+
+			[/for]
+}
+
+
+		[/file]
+		[else]
+	
+			[file (s.name+'/src/main/java/org/'+aMicroserviceArchitecture.name.toLower()+'/'+s.fullname.toLower()+'/controller/'+s.fullname+'Controller.java', false, 'UTF-8')]
+package org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].controller;
+
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].impl.*;
+import org.[aMicroserviceArchitecture.name.toLower()/].[s.fullname.toLower()/].model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@RestController
+public class [s.fullname/]Controller {
+
+	private static final Logger log = LoggerFactory.getLogger([s.fullname/]Controller.class);
+
+				[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.models->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+					[if (s.oclAsType(micro::ViewService).replicateServices.modelEvents.model->select(e | e.name.toString().equalsIgnoreCase(model.name))->size() > 0)]
+	@Autowired
+	private [model.name/]ServiceImpl [model.name.toLower()/]ServiceImpl;
+				
+					[/if]
+				[/for]
+				[for (model : Model | s.oclAsType(micro::ViewService).replicateServices.models->asBag()->intersection(aMicroserviceArchitecture.models->asBag()))]
+					[if (s.oclAsType(micro::ViewService).replicateServices.modelEvents.model->select(e | e.name.toString().equalsIgnoreCase(model.name))->size() > 0)]
+						[for (operation : Operation | s.oclAsType(micro::ViewService).replicateServices.operation->select(m | m.model.name.toString().equalsIgnoreCase(model.name) and m.operationType.toString().equalsIgnoreCase('retrieve') ))]
+	@GetMapping("/retrieve/{[model.name.toLower()/]Id}")
+	public [model.name/] [operation.name/](String id){
+		log.info("[operation.name/](String id) - [s.fullname/]Controller - [s.fullname/]");
+		return null;
+	}
+
+						[/for]
+	@GetMapping("/retrieve/[model.name/]s")
+	public List<[model.name/]> findAll[model.name/]s(){
+		/*Auto-Generated*/
+		log.info("findAll[model.name/]s() - [s.fullname/]Controller - [s.fullname/]");
+		return [model.name.toLower()/]ServiceImpl.findAll();
+	}
+
+					[/if]
+				[/for]
+}
+			[/file]
+	[/if]
+[/for]
+[/template]

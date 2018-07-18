@@ -1,0 +1,2506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="commandHandlerGenerate" nsURI="org::eclipse::acceleo::module::sample::main::commandHandlerGenerate" startHeaderPosition="29" endHeaderPosition="196">
+    <input>
+      <takesTypesFrom href="http://it.univa.disim.micro#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateElement" visibility="Public" main="true">
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".commandhandlers;&#xA;&#xA;import org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".servicemodel.common.Channels;&#xA;import org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".servicemodel."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/shortname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".api.commands.*;&#xA;import org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".servicemodel."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/shortname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".api.info.*;&#xA;import org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".impl.*;&#xA;import org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".model.*;&#xA;import org.slf4j.Logger;&#xA;import org.slf4j.LoggerFactory;&#xA;import org.springframework.beans.factory.annotation.Autowired;&#xA;import io.eventuate.tram.commands.consumer.CommandHandlers;&#xA;import io.eventuate.tram.commands.consumer.CommandMessage;&#xA;import io.eventuate.tram.messaging.common.Message;&#xA;import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder;&#xA;import static io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withFailure;&#xA;import static io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess;&#xA;import java.util.ArrayList;&#xA;import java.util.List;&#xA;&#xA;public class "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers {&#xA;&#xA;&#x9;private static final Logger log = LoggerFactory.getLogger("/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers.class);&#xA;&#xA;"/>
+            <body xsi:type="mtl:ForBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@Autowired&#xA;&#x9;private "/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateElement/%/%.1/%/%.27/model">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ServiceImpl "/>
+              <body xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateElement/%/%.1/%/%.27/model">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="ServiceImpl;&#xA;&#xA;"/>
+              <loopVariable name="model">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+              </loopVariable>
+              <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/6/Sequence(Model)">
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(ModelEvent)">
+                  <source xsi:type="ocl.ecore:OperationCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <argument xsi:type="ocl.ecore:TypeExp" eType="/9/AggregateService">
+                      <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                    </argument>
+                    <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//AggregateService/modelEvents"/>
+                </source>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateElement/%/%.1/%/%.27/collect/temp1">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//ModelEvent"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//ModelEvent/model"/>
+                </body>
+                <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//ModelEvent"/>
+                </iterator>
+              </iterSet>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;public CommandHandlers commandHandlers() {&#xA;&#x9;&#x9;return SagaCommandHandlersBuilder&#xA;&#x9;&#x9;&#x9;&#x9;.fromChannel(Channels."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toUpper"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")&#xA;"/>
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="mtl:ForBlock">
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;.onMessage("/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.31/%/command">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".class, this::handle"/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.31/%/command">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=")&#xA;"/>
+                <loopVariable name="command">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                </loopVariable>
+                <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(Command)">
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//API"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:TypeExp" eType="/9/AggregateService">
+                        <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//AggregateService/api"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//API/commands"/>
+                </iterSet>
+              </body>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//API"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:TypeExp" eType="/9/AggregateService">
+                        <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//AggregateService/api"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
+                </source>
+                <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;.build();&#xA;&#x9;}&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;"/>
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="mtl:ForBlock">
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;private Message handle"/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.33/%/command">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(CommandMessage&lt;"/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.33/%/command">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="> cm) {&#xA;&#x9;&#x9;log.info(&quot;handle"/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.33/%/command">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() - "/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers - "/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;);&#xA;&#x9;&#x9;/*TODO*/&#xA;"/>
+                <body xsi:type="mtl:IfBlock">
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;return withSuccess(new "/>
+                  <body xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:PropertyCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Info"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.33/%/command">
+                        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                      </source>
+                      <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//Command/replyInfo"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                  </body>
+                  <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Info());&#xA;"/>
+                  <ifExpr xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/equalsIgnoreCase">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_OclAny_Class/toString">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ecore:EEnum" href="http://it.univa.disim.micro#//CommandType"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="command" referredVariable="/0/generateElement/%/%.1/%/%.33/%/command">
+                          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Command/commandType"/>
+                      </source>
+                    </source>
+                    <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="reply">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    </argument>
+                  </ifExpr>
+                  <else>
+                    <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;return withSuccess();&#xA;"/>
+                  </else>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;}&#xA;&#xA;"/>
+                <loopVariable name="command">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+                </loopVariable>
+                <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(Command)">
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//API"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:TypeExp" eType="/9/AggregateService">
+                        <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//AggregateService/api"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//API/commands"/>
+                </iterSet>
+              </body>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//API"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                      </source>
+                      <argument xsi:type="ocl.ecore:TypeExp" eType="/9/AggregateService">
+                        <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+                      </argument>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//AggregateService/api"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsUndefined"/>
+                </source>
+                <argument xsi:type="ocl.ecore:BooleanLiteralExp" booleanSymbol="false">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/="/>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="}&#xA;"/>
+            <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                          </source>
+                          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/src/main/java/org/">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          </argument>
+                        </source>
+                        <argument xsi:type="ocl.ecore:OperationCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                          </source>
+                          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                        </argument>
+                      </source>
+                      <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </argument>
+                    </source>
+                    <argument xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                    </argument>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/commandhandlers/">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers.java">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </fileUrl>
+            <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </charset>
+          </body>
+          <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package org."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                  <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".commandhandlers;&#xA;&#xA;import org.springframework.context.annotation.Bean;&#xA;import org.springframework.context.annotation.Configuration;&#xA;import org.springframework.context.annotation.Import;&#xA;import io.eventuate.tram.commands.consumer.CommandDispatcher;&#xA;import io.eventuate.tram.events.publisher.TramEventsPublisherConfiguration;&#xA;import io.eventuate.tram.sagas.participant.SagaCommandDispatcher;&#xA;import io.eventuate.tram.sagas.participant.SagaParticipantConfiguration;&#xA;&#xA;@Configuration&#xA;@Import({ SagaParticipantConfiguration.class, TramEventsPublisherConfiguration.class })&#xA;public class "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlersConfiguration {&#xA;&#xA;&#x9;@Bean&#xA;&#x9;public "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers "/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/at"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </source>
+                <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="2">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/size"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/substring"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers() {&#xA;&#x9;    return new "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers();&#xA;&#x9;}&#xA;&#xA;&#x9;@Bean&#xA;&#x9;public CommandDispatcher commandDispatcher("/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers "/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/at"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </source>
+                <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="2">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/size"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/substring"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers) {&#xA;&#x9;    return new SagaCommandDispatcher(&quot;"/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/at"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </source>
+                <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="2">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/size"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/substring"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Dispatcher&quot;, "/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/at"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </source>
+                <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="2">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                </argument>
+                <argument xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+                  <source xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                      <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                  </source>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/size"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/substring"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlers.commandHandlers());&#xA;&#x9;}&#xA;}&#xA;"/>
+            <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                    <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/+">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                          </source>
+                          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/src/main/java/org/">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          </argument>
+                        </source>
+                        <argument xsi:type="ocl.ecore:OperationCallExp">
+                          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                          <source xsi:type="ocl.ecore:PropertyCallExp">
+                            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                            <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+                              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+                            </source>
+                            <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//NamedElement/name"/>
+                          </source>
+                          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                        </argument>
+                      </source>
+                      <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      </argument>
+                    </source>
+                    <argument xsi:type="ocl.ecore:OperationCallExp">
+                      <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                      <source xsi:type="ocl.ecore:PropertyCallExp">
+                        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                        <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                        </source>
+                        <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                      </source>
+                      <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/toLower"/>
+                    </argument>
+                  </source>
+                  <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/commandhandlers/">
+                    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  </argument>
+                </source>
+                <argument xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+                    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://it.univa.disim.micro#//Service/fullname"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CommandHandlersConfiguration.java">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+            </fileUrl>
+            <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </charset>
+          </body>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="s" referredVariable="/0/generateElement/%/s">
+              <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/9/AggregateService">
+              <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+          </ifExpr>
+        </body>
+        <loopVariable name="s">
+          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(Service)">
+          <source xsi:type="ocl.ecore:VariableExp" name="aMicroserviceArchitecture" referredVariable="/0/generateElement/aMicroserviceArchitecture">
+            <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://it.univa.disim.micro#//MicroserviceArchitecture/services"/>
+        </iterSet>
+      </body>
+      <parameter name="aMicroserviceArchitecture">
+        <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="equalsIgnoreCase">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="+">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="other">
+          <eType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateElement">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateElement"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aMicroserviceArchitecture">
+          <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="toString">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="micro_MicroserviceArchitecture_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Service)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(ModelEvent)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//ModelEvent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Model)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Command)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="AggregateService">
+      <referredType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//AggregateService"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Command"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//Service"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://it.univa.disim.micro#//MicroserviceArchitecture"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateElement">
+      <details key="start" value="94"/>
+      <details key="end" value="4451"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateElement/%">
+      <details key="start" value="199"/>
+      <details key="end" value="4439"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateElement/%/%">
+      <details key="start" value="256"/>
+      <details key="end" value="258"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateElement/%/%.1">
+      <details key="start" value="259"/>
+      <details key="end" value="4432"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateElement/%/%.1/%">
+      <details key="start" value="346"/>
+      <details key="end" value="2926"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateElement/%/%.1/%/%">
+      <details key="start" value="522"/>
+      <details key="end" value="534"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateElement/%/%.1/%/%.1">
+      <details key="start" value="535"/>
+      <details key="end" value="575"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateElement/%/%.1/%/%.1/%">
+      <details key="start" value="535"/>
+      <details key="end" value="565"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateElement/%/%.1/%/%.1/%/aMicroserviceArchitecture">
+      <details key="start" value="535"/>
+      <details key="end" value="560"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateElement/%/%.1/%/%.2">
+      <details key="start" value="577"/>
+      <details key="end" value="578"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateElement/%/%.1/%/%.3">
+      <details key="start" value="579"/>
+      <details key="end" value="599"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateElement/%/%.1/%/%.3/%">
+      <details key="start" value="579"/>
+      <details key="end" value="589"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateElement/%/%.1/%/%.3/%/s">
+      <details key="start" value="579"/>
+      <details key="end" value="580"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateElement/%/%.1/%/%.4">
+      <details key="start" value="601"/>
+      <details key="end" value="631"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateElement/%/%.1/%/%.5">
+      <details key="start" value="632"/>
+      <details key="end" value="672"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateElement/%/%.1/%/%.5/%">
+      <details key="start" value="632"/>
+      <details key="end" value="662"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateElement/%/%.1/%/%.5/%/aMicroserviceArchitecture">
+      <details key="start" value="632"/>
+      <details key="end" value="657"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateElement/%/%.1/%/%.6">
+      <details key="start" value="674"/>
+      <details key="end" value="716"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateElement/%/%.1/%/%.7">
+      <details key="start" value="717"/>
+      <details key="end" value="757"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateElement/%/%.1/%/%.7/%">
+      <details key="start" value="717"/>
+      <details key="end" value="747"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateElement/%/%.1/%/%.7/%/aMicroserviceArchitecture">
+      <details key="start" value="717"/>
+      <details key="end" value="742"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateElement/%/%.1/%/%.8">
+      <details key="start" value="759"/>
+      <details key="end" value="773"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateElement/%/%.1/%/%.9">
+      <details key="start" value="774"/>
+      <details key="end" value="795"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateElement/%/%.1/%/%.9/%">
+      <details key="start" value="774"/>
+      <details key="end" value="785"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateElement/%/%.1/%/%.9/%/s">
+      <details key="start" value="774"/>
+      <details key="end" value="775"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateElement/%/%.1/%/%.10">
+      <details key="start" value="797"/>
+      <details key="end" value="825"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateElement/%/%.1/%/%.11">
+      <details key="start" value="826"/>
+      <details key="end" value="866"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateElement/%/%.1/%/%.11/%">
+      <details key="start" value="826"/>
+      <details key="end" value="856"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateElement/%/%.1/%/%.11/%/aMicroserviceArchitecture">
+      <details key="start" value="826"/>
+      <details key="end" value="851"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateElement/%/%.1/%/%.12">
+      <details key="start" value="868"/>
+      <details key="end" value="882"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateElement/%/%.1/%/%.13">
+      <details key="start" value="883"/>
+      <details key="end" value="904"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateElement/%/%.1/%/%.13/%">
+      <details key="start" value="883"/>
+      <details key="end" value="894"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateElement/%/%.1/%/%.13/%/s">
+      <details key="start" value="883"/>
+      <details key="end" value="884"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateElement/%/%.1/%/%.14">
+      <details key="start" value="906"/>
+      <details key="end" value="930"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateElement/%/%.1/%/%.15">
+      <details key="start" value="931"/>
+      <details key="end" value="971"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateElement/%/%.1/%/%.15/%">
+      <details key="start" value="931"/>
+      <details key="end" value="961"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateElement/%/%.1/%/%.15/%/aMicroserviceArchitecture">
+      <details key="start" value="931"/>
+      <details key="end" value="956"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateElement/%/%.1/%/%.16">
+      <details key="start" value="973"/>
+      <details key="end" value="974"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateElement/%/%.1/%/%.17">
+      <details key="start" value="975"/>
+      <details key="end" value="995"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateElement/%/%.1/%/%.17/%">
+      <details key="start" value="975"/>
+      <details key="end" value="985"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateElement/%/%.1/%/%.17/%/s">
+      <details key="start" value="975"/>
+      <details key="end" value="976"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateElement/%/%.1/%/%.18">
+      <details key="start" value="997"/>
+      <details key="end" value="1017"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateElement/%/%.1/%/%.19">
+      <details key="start" value="1018"/>
+      <details key="end" value="1058"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateElement/%/%.1/%/%.19/%">
+      <details key="start" value="1018"/>
+      <details key="end" value="1048"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateElement/%/%.1/%/%.19/%/aMicroserviceArchitecture">
+      <details key="start" value="1018"/>
+      <details key="end" value="1043"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateElement/%/%.1/%/%.20">
+      <details key="start" value="1060"/>
+      <details key="end" value="1061"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateElement/%/%.1/%/%.21">
+      <details key="start" value="1062"/>
+      <details key="end" value="1082"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateElement/%/%.1/%/%.21/%">
+      <details key="start" value="1062"/>
+      <details key="end" value="1072"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateElement/%/%.1/%/%.21/%/s">
+      <details key="start" value="1062"/>
+      <details key="end" value="1063"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateElement/%/%.1/%/%.22">
+      <details key="start" value="1084"/>
+      <details key="end" value="1700"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateElement/%/%.1/%/%.23">
+      <details key="start" value="1701"/>
+      <details key="end" value="1711"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateElement/%/%.1/%/%.23/s">
+      <details key="start" value="1701"/>
+      <details key="end" value="1702"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateElement/%/%.1/%/%.24">
+      <details key="start" value="1713"/>
+      <details key="end" value="1791"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateElement/%/%.1/%/%.25">
+      <details key="start" value="1792"/>
+      <details key="end" value="1802"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateElement/%/%.1/%/%.25/s">
+      <details key="start" value="1792"/>
+      <details key="end" value="1793"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateElement/%/%.1/%/%.26">
+      <details key="start" value="1804"/>
+      <details key="end" value="1829"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateElement/%/%.1/%/%.27">
+      <details key="start" value="1830"/>
+      <details key="end" value="1999"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateElement/%/%.1/%/%.27/%">
+      <details key="start" value="1909"/>
+      <details key="end" value="1930"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateElement/%/%.1/%/%.27/%.1">
+      <details key="start" value="1931"/>
+      <details key="end" value="1941"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateElement/%/%.1/%/%.27/%.1/model">
+      <details key="start" value="1931"/>
+      <details key="end" value="1936"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateElement/%/%.1/%/%.27/%.2">
+      <details key="start" value="1943"/>
+      <details key="end" value="1955"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateElement/%/%.1/%/%.27/%.3">
+      <details key="start" value="1956"/>
+      <details key="end" value="1976"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateElement/%/%.1/%/%.27/%.3/%">
+      <details key="start" value="1956"/>
+      <details key="end" value="1966"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateElement/%/%.1/%/%.27/%.3/%/model">
+      <details key="start" value="1956"/>
+      <details key="end" value="1961"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateElement/%/%.1/%/%.27/%.4">
+      <details key="start" value="1978"/>
+      <details key="end" value="1992"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateElement/%/%.1/%/%.27/model">
+      <details key="start" value="1836"/>
+      <details key="end" value="1849"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateElement/%/%.1/%/%.27/collect">
+      <details key="start" value="1852"/>
+      <details key="end" value="1906"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateElement/%/%.1/%/%.27/collect/%">
+      <details key="start" value="1852"/>
+      <details key="end" value="1900"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateElement/%/%.1/%/%.27/collect/%/%">
+      <details key="start" value="1852"/>
+      <details key="end" value="1888"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateElement/%/%.1/%/%.27/collect/%/%/s">
+      <details key="start" value="1852"/>
+      <details key="end" value="1853"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateElement/%/%.1/%/%.27/collect/%/%/%">
+      <details key="start" value="1864"/>
+      <details key="end" value="1887"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateElement/%/%.1/%/%.27/collect/%.1">
+      <details key="start" value="1901"/>
+      <details key="end" value="1906"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateElement/%/%.1/%/%.27/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateElement/%/%.1/%/%.27/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateElement/%/%.1/%/%.28">
+      <details key="start" value="2000"/>
+      <details key="end" value="2106"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateElement/%/%.1/%/%.29">
+      <details key="start" value="2107"/>
+      <details key="end" value="2127"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateElement/%/%.1/%/%.29/%">
+      <details key="start" value="2107"/>
+      <details key="end" value="2117"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateElement/%/%.1/%/%.29/%/s">
+      <details key="start" value="2107"/>
+      <details key="end" value="2108"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateElement/%/%.1/%/%.30">
+      <details key="start" value="2129"/>
+      <details key="end" value="2131"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateElement/%/%.1/%/%.31">
+      <details key="start" value="2133"/>
+      <details key="end" value="2371"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateElement/%/%.1/%/%.31/%">
+      <details key="start" value="2209"/>
+      <details key="end" value="2363"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateElement/%/%.1/%/%.31/%/%">
+      <details key="start" value="2287"/>
+      <details key="end" value="2302"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateElement/%/%.1/%/%.31/%/%.1">
+      <details key="start" value="2303"/>
+      <details key="end" value="2315"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateElement/%/%.1/%/%.31/%/%.1/command">
+      <details key="start" value="2303"/>
+      <details key="end" value="2310"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateElement/%/%.1/%/%.31/%/%.2">
+      <details key="start" value="2317"/>
+      <details key="end" value="2337"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateElement/%/%.1/%/%.31/%/%.3">
+      <details key="start" value="2338"/>
+      <details key="end" value="2350"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateElement/%/%.1/%/%.31/%/%.3/command">
+      <details key="start" value="2338"/>
+      <details key="end" value="2345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateElement/%/%.1/%/%.31/%/%.4">
+      <details key="start" value="2352"/>
+      <details key="end" value="2354"/>
+      <details key="line" value="45"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateElement/%/%.1/%/%.31/%/command">
+      <details key="start" value="2215"/>
+      <details key="end" value="2232"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateElement/%/%.1/%/%.31/%/%.5">
+      <details key="start" value="2235"/>
+      <details key="end" value="2284"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateElement/%/%.1/%/%.31/%/%.5/%">
+      <details key="start" value="2235"/>
+      <details key="end" value="2275"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateElement/%/%.1/%/%.31/%/%.5/%/%">
+      <details key="start" value="2235"/>
+      <details key="end" value="2271"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateElement/%/%.1/%/%.31/%/%.5/%/%/s">
+      <details key="start" value="2235"/>
+      <details key="end" value="2236"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateElement/%/%.1/%/%.31/%/%.5/%/%/%">
+      <details key="start" value="2247"/>
+      <details key="end" value="2270"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateElement/%/%.1/%/%.31/%.1">
+      <details key="start" value="2137"/>
+      <details key="end" value="2204"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateElement/%/%.1/%/%.31/%.1/%">
+      <details key="start" value="2138"/>
+      <details key="end" value="2195"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateElement/%/%.1/%/%.31/%.1/%/%">
+      <details key="start" value="2138"/>
+      <details key="end" value="2178"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateElement/%/%.1/%/%.31/%.1/%/%/%">
+      <details key="start" value="2138"/>
+      <details key="end" value="2174"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateElement/%/%.1/%/%.31/%.1/%/%/%/s">
+      <details key="start" value="2138"/>
+      <details key="end" value="2139"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateElement/%/%.1/%/%.31/%.1/%/%/%/%">
+      <details key="start" value="2150"/>
+      <details key="end" value="2173"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateElement/%/%.1/%/%.31/%.1/%.1">
+      <details key="start" value="2198"/>
+      <details key="end" value="2203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateElement/%/%.1/%/%.32">
+      <details key="start" value="2372"/>
+      <details key="end" value="2394"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateElement/%/%.1/%/%.33">
+      <details key="start" value="2396"/>
+      <details key="end" value="2914"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateElement/%/%.1/%/%.33/%">
+      <details key="start" value="2472"/>
+      <details key="end" value="2906"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateElement/%/%.1/%/%.33/%/%">
+      <details key="start" value="2550"/>
+      <details key="end" value="2573"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateElement/%/%.1/%/%.33/%/%.1">
+      <details key="start" value="2574"/>
+      <details key="end" value="2586"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateElement/%/%.1/%/%.33/%/%.1/command">
+      <details key="start" value="2574"/>
+      <details key="end" value="2581"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateElement/%/%.1/%/%.33/%/%.2">
+      <details key="start" value="2588"/>
+      <details key="end" value="2604"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateElement/%/%.1/%/%.33/%/%.3">
+      <details key="start" value="2605"/>
+      <details key="end" value="2617"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateElement/%/%.1/%/%.33/%/%.3/command">
+      <details key="start" value="2605"/>
+      <details key="end" value="2612"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateElement/%/%.1/%/%.33/%/%.4">
+      <details key="start" value="2619"/>
+      <details key="end" value="2645"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateElement/%/%.1/%/%.33/%/%.5">
+      <details key="start" value="2646"/>
+      <details key="end" value="2658"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateElement/%/%.1/%/%.33/%/%.5/command">
+      <details key="start" value="2646"/>
+      <details key="end" value="2653"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateElement/%/%.1/%/%.33/%/%.6">
+      <details key="start" value="2660"/>
+      <details key="end" value="2665"/>
+      <details key="line" value="54"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateElement/%/%.1/%/%.33/%/%.7">
+      <details key="start" value="2666"/>
+      <details key="end" value="2676"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateElement/%/%.1/%/%.33/%/%.7/s">
+      <details key="start" value="2666"/>
+      <details key="end" value="2667"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateElement/%/%.1/%/%.33/%/%.8">
+      <details key="start" value="2678"/>
+      <details key="end" value="2696"/>
+      <details key="line" value="54"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateElement/%/%.1/%/%.33/%/%.9">
+      <details key="start" value="2697"/>
+      <details key="end" value="2707"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateElement/%/%.1/%/%.33/%/%.9/s">
+      <details key="start" value="2697"/>
+      <details key="end" value="2698"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateElement/%/%.1/%/%.33/%/%.10">
+      <details key="start" value="2709"/>
+      <details key="end" value="2724"/>
+      <details key="line" value="54"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateElement/%/%.1/%/%.33/%/%.11">
+      <details key="start" value="2726"/>
+      <details key="end" value="2890"/>
+      <details key="line" value="56"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%">
+      <details key="start" value="2790"/>
+      <details key="end" value="2815"/>
+      <details key="line" value="57"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.1">
+      <details key="start" value="2816"/>
+      <details key="end" value="2838"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.1/%">
+      <details key="start" value="2816"/>
+      <details key="end" value="2833"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.1/%/command">
+      <details key="start" value="2816"/>
+      <details key="end" value="2823"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.2">
+      <details key="start" value="2840"/>
+      <details key="end" value="2849"/>
+      <details key="line" value="57"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.3">
+      <details key="start" value="2730"/>
+      <details key="end" value="2788"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.3/%">
+      <details key="start" value="2731"/>
+      <details key="end" value="2761"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.3/%/%">
+      <details key="start" value="2731"/>
+      <details key="end" value="2750"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.3/%/%/command">
+      <details key="start" value="2731"/>
+      <details key="end" value="2738"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.3/%.1">
+      <details key="start" value="2779"/>
+      <details key="end" value="2786"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.4">
+      <details key="start" value="2852"/>
+      <details key="end" value="2885"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/generateElement/%/%.1/%/%.33/%/%.11/%.4/%">
+      <details key="start" value="2859"/>
+      <details key="end" value="2883"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/generateElement/%/%.1/%/%.33/%/%.12">
+      <details key="start" value="2893"/>
+      <details key="end" value="2897"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/generateElement/%/%.1/%/%.33/%/command">
+      <details key="start" value="2478"/>
+      <details key="end" value="2495"/>
+      <details key="line" value="52"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/generateElement/%/%.1/%/%.33/%/%.13">
+      <details key="start" value="2498"/>
+      <details key="end" value="2547"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/generateElement/%/%.1/%/%.33/%/%.13/%">
+      <details key="start" value="2498"/>
+      <details key="end" value="2538"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/generateElement/%/%.1/%/%.33/%/%.13/%/%">
+      <details key="start" value="2498"/>
+      <details key="end" value="2534"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/generateElement/%/%.1/%/%.33/%/%.13/%/%/s">
+      <details key="start" value="2498"/>
+      <details key="end" value="2499"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/generateElement/%/%.1/%/%.33/%/%.13/%/%/%">
+      <details key="start" value="2510"/>
+      <details key="end" value="2533"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/generateElement/%/%.1/%/%.33/%.1">
+      <details key="start" value="2400"/>
+      <details key="end" value="2467"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/generateElement/%/%.1/%/%.33/%.1/%">
+      <details key="start" value="2401"/>
+      <details key="end" value="2458"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/generateElement/%/%.1/%/%.33/%.1/%/%">
+      <details key="start" value="2401"/>
+      <details key="end" value="2441"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/generateElement/%/%.1/%/%.33/%.1/%/%/%">
+      <details key="start" value="2401"/>
+      <details key="end" value="2437"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/generateElement/%/%.1/%/%.33/%.1/%/%/%/s">
+      <details key="start" value="2401"/>
+      <details key="end" value="2402"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/generateElement/%/%.1/%/%.33/%.1/%/%/%/%">
+      <details key="start" value="2413"/>
+      <details key="end" value="2436"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/generateElement/%/%.1/%/%.33/%.1/%.1">
+      <details key="start" value="2461"/>
+      <details key="end" value="2466"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/generateElement/%/%.1/%/%.34">
+      <details key="start" value="2915"/>
+      <details key="end" value="2917"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/generateElement/%/%.1/%/%.35">
+      <details key="start" value="353"/>
+      <details key="end" value="501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/generateElement/%/%.1/%/%.35/%">
+      <details key="start" value="353"/>
+      <details key="end" value="478"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/generateElement/%/%.1/%/%.35/%/%">
+      <details key="start" value="353"/>
+      <details key="end" value="467"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/generateElement/%/%.1/%/%.35/%/%/%">
+      <details key="start" value="353"/>
+      <details key="end" value="447"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%">
+      <details key="start" value="353"/>
+      <details key="end" value="426"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%">
+      <details key="start" value="353"/>
+      <details key="end" value="422"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%">
+      <details key="start" value="353"/>
+      <details key="end" value="381"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%/%">
+      <details key="start" value="353"/>
+      <details key="end" value="359"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%/%/s">
+      <details key="start" value="353"/>
+      <details key="end" value="354"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%/%.1">
+      <details key="start" value="360"/>
+      <details key="end" value="381"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%.1">
+      <details key="start" value="382"/>
+      <details key="end" value="422"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%.1/%">
+      <details key="start" value="382"/>
+      <details key="end" value="412"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%/%.1/%/aMicroserviceArchitecture">
+      <details key="start" value="382"/>
+      <details key="end" value="407"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%/%.1">
+      <details key="start" value="423"/>
+      <details key="end" value="426"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%.1">
+      <details key="start" value="427"/>
+      <details key="end" value="447"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%.1/%">
+      <details key="start" value="427"/>
+      <details key="end" value="437"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/generateElement/%/%.1/%/%.35/%/%/%/%.1/%/s">
+      <details key="start" value="427"/>
+      <details key="end" value="428"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/generateElement/%/%.1/%/%.35/%/%/%.1">
+      <details key="start" value="448"/>
+      <details key="end" value="467"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/generateElement/%/%.1/%/%.35/%/%.1">
+      <details key="start" value="468"/>
+      <details key="end" value="478"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/generateElement/%/%.1/%/%.35/%/%.1/s">
+      <details key="start" value="468"/>
+      <details key="end" value="469"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/generateElement/%/%.1/%/%.35/%.1">
+      <details key="start" value="479"/>
+      <details key="end" value="501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/generateElement/%/%.1/%/%.36">
+      <details key="start" value="510"/>
+      <details key="end" value="517"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/generateElement/%/%.1/%.1">
+      <details key="start" value="2929"/>
+      <details key="end" value="4425"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/generateElement/%/%.1/%.1/%">
+      <details key="start" value="3116"/>
+      <details key="end" value="3128"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.172" references="/0/generateElement/%/%.1/%.1/%.1">
+      <details key="start" value="3129"/>
+      <details key="end" value="3169"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.173" references="/0/generateElement/%/%.1/%.1/%.1/%">
+      <details key="start" value="3129"/>
+      <details key="end" value="3159"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/generateElement/%/%.1/%.1/%.1/%/aMicroserviceArchitecture">
+      <details key="start" value="3129"/>
+      <details key="end" value="3154"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.175" references="/0/generateElement/%/%.1/%.1/%.2">
+      <details key="start" value="3171"/>
+      <details key="end" value="3172"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.176" references="/0/generateElement/%/%.1/%.1/%.3">
+      <details key="start" value="3173"/>
+      <details key="end" value="3193"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.177" references="/0/generateElement/%/%.1/%.1/%.3/%">
+      <details key="start" value="3173"/>
+      <details key="end" value="3183"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.178" references="/0/generateElement/%/%.1/%.1/%.3/%/s">
+      <details key="start" value="3173"/>
+      <details key="end" value="3174"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.179" references="/0/generateElement/%/%.1/%.1/%.4">
+      <details key="start" value="3195"/>
+      <details key="end" value="3775"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.180" references="/0/generateElement/%/%.1/%.1/%.5">
+      <details key="start" value="3776"/>
+      <details key="end" value="3786"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.181" references="/0/generateElement/%/%.1/%.1/%.5/s">
+      <details key="start" value="3776"/>
+      <details key="end" value="3777"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.182" references="/0/generateElement/%/%.1/%.1/%.6">
+      <details key="start" value="3788"/>
+      <details key="end" value="3835"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.183" references="/0/generateElement/%/%.1/%.1/%.7">
+      <details key="start" value="3836"/>
+      <details key="end" value="3846"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.184" references="/0/generateElement/%/%.1/%.1/%.7/s">
+      <details key="start" value="3836"/>
+      <details key="end" value="3837"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.185" references="/0/generateElement/%/%.1/%.1/%.8">
+      <details key="start" value="3848"/>
+      <details key="end" value="3864"/>
+      <details key="line" value="83"/>
+    </eAnnotations>
+    <eAnnotations source="positions.186" references="/0/generateElement/%/%.1/%.1/%.9">
+      <details key="start" value="3865"/>
+      <details key="end" value="3934"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.187" references="/0/generateElement/%/%.1/%.1/%.9/%">
+      <details key="start" value="3865"/>
+      <details key="end" value="3891"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.188" references="/0/generateElement/%/%.1/%.1/%.9/%/%">
+      <details key="start" value="3865"/>
+      <details key="end" value="3881"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.189" references="/0/generateElement/%/%.1/%.1/%.9/%/%/%">
+      <details key="start" value="3865"/>
+      <details key="end" value="3875"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.190" references="/0/generateElement/%/%.1/%.1/%.9/%/%/%/s">
+      <details key="start" value="3865"/>
+      <details key="end" value="3866"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.191" references="/0/generateElement/%/%.1/%.1/%.9/%/%/%.1">
+      <details key="start" value="3879"/>
+      <details key="end" value="3880"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.192" references="/0/generateElement/%/%.1/%.1/%.9/%.1">
+      <details key="start" value="3892"/>
+      <details key="end" value="3934"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.193" references="/0/generateElement/%/%.1/%.1/%.9/%.1/%">
+      <details key="start" value="3892"/>
+      <details key="end" value="3902"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.194" references="/0/generateElement/%/%.1/%.1/%.9/%.1/%/s">
+      <details key="start" value="3892"/>
+      <details key="end" value="3893"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.195" references="/0/generateElement/%/%.1/%.1/%.9/%.1/%.1">
+      <details key="start" value="3913"/>
+      <details key="end" value="3914"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.196" references="/0/generateElement/%/%.1/%.1/%.9/%.1/%.2">
+      <details key="start" value="3916"/>
+      <details key="end" value="3933"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.197" references="/0/generateElement/%/%.1/%.1/%.9/%.1/%.2/%">
+      <details key="start" value="3916"/>
+      <details key="end" value="3926"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.198" references="/0/generateElement/%/%.1/%.1/%.9/%.1/%.2/%/s">
+      <details key="start" value="3916"/>
+      <details key="end" value="3917"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.199" references="/0/generateElement/%/%.1/%.1/%.10">
+      <details key="start" value="3936"/>
+      <details key="end" value="3972"/>
+      <details key="line" value="83"/>
+    </eAnnotations>
+    <eAnnotations source="positions.200" references="/0/generateElement/%/%.1/%.1/%.11">
+      <details key="start" value="3973"/>
+      <details key="end" value="3983"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.201" references="/0/generateElement/%/%.1/%.1/%.11/s">
+      <details key="start" value="3973"/>
+      <details key="end" value="3974"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.202" references="/0/generateElement/%/%.1/%.1/%.12">
+      <details key="start" value="3985"/>
+      <details key="end" value="4059"/>
+      <details key="line" value="84"/>
+    </eAnnotations>
+    <eAnnotations source="positions.203" references="/0/generateElement/%/%.1/%.1/%.13">
+      <details key="start" value="4060"/>
+      <details key="end" value="4070"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.204" references="/0/generateElement/%/%.1/%.1/%.13/s">
+      <details key="start" value="4060"/>
+      <details key="end" value="4061"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.205" references="/0/generateElement/%/%.1/%.1/%.14">
+      <details key="start" value="4072"/>
+      <details key="end" value="4088"/>
+      <details key="line" value="88"/>
+    </eAnnotations>
+    <eAnnotations source="positions.206" references="/0/generateElement/%/%.1/%.1/%.15">
+      <details key="start" value="4089"/>
+      <details key="end" value="4158"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.207" references="/0/generateElement/%/%.1/%.1/%.15/%">
+      <details key="start" value="4089"/>
+      <details key="end" value="4115"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.208" references="/0/generateElement/%/%.1/%.1/%.15/%/%">
+      <details key="start" value="4089"/>
+      <details key="end" value="4105"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.209" references="/0/generateElement/%/%.1/%.1/%.15/%/%/%">
+      <details key="start" value="4089"/>
+      <details key="end" value="4099"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.210" references="/0/generateElement/%/%.1/%.1/%.15/%/%/%/s">
+      <details key="start" value="4089"/>
+      <details key="end" value="4090"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.211" references="/0/generateElement/%/%.1/%.1/%.15/%/%/%.1">
+      <details key="start" value="4103"/>
+      <details key="end" value="4104"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.212" references="/0/generateElement/%/%.1/%.1/%.15/%.1">
+      <details key="start" value="4116"/>
+      <details key="end" value="4158"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.213" references="/0/generateElement/%/%.1/%.1/%.15/%.1/%">
+      <details key="start" value="4116"/>
+      <details key="end" value="4126"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.214" references="/0/generateElement/%/%.1/%.1/%.15/%.1/%/s">
+      <details key="start" value="4116"/>
+      <details key="end" value="4117"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.215" references="/0/generateElement/%/%.1/%.1/%.15/%.1/%.1">
+      <details key="start" value="4137"/>
+      <details key="end" value="4138"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.216" references="/0/generateElement/%/%.1/%.1/%.15/%.1/%.2">
+      <details key="start" value="4140"/>
+      <details key="end" value="4157"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.217" references="/0/generateElement/%/%.1/%.1/%.15/%.1/%.2/%">
+      <details key="start" value="4140"/>
+      <details key="end" value="4150"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.218" references="/0/generateElement/%/%.1/%.1/%.15/%.1/%.2/%/s">
+      <details key="start" value="4140"/>
+      <details key="end" value="4141"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.219" references="/0/generateElement/%/%.1/%.1/%.16">
+      <details key="start" value="4160"/>
+      <details key="end" value="4218"/>
+      <details key="line" value="88"/>
+    </eAnnotations>
+    <eAnnotations source="positions.220" references="/0/generateElement/%/%.1/%.1/%.17">
+      <details key="start" value="4219"/>
+      <details key="end" value="4288"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.221" references="/0/generateElement/%/%.1/%.1/%.17/%">
+      <details key="start" value="4219"/>
+      <details key="end" value="4245"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.222" references="/0/generateElement/%/%.1/%.1/%.17/%/%">
+      <details key="start" value="4219"/>
+      <details key="end" value="4235"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.223" references="/0/generateElement/%/%.1/%.1/%.17/%/%/%">
+      <details key="start" value="4219"/>
+      <details key="end" value="4229"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.224" references="/0/generateElement/%/%.1/%.1/%.17/%/%/%/s">
+      <details key="start" value="4219"/>
+      <details key="end" value="4220"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.225" references="/0/generateElement/%/%.1/%.1/%.17/%/%/%.1">
+      <details key="start" value="4233"/>
+      <details key="end" value="4234"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.226" references="/0/generateElement/%/%.1/%.1/%.17/%.1">
+      <details key="start" value="4246"/>
+      <details key="end" value="4288"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.227" references="/0/generateElement/%/%.1/%.1/%.17/%.1/%">
+      <details key="start" value="4246"/>
+      <details key="end" value="4256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.228" references="/0/generateElement/%/%.1/%.1/%.17/%.1/%/s">
+      <details key="start" value="4246"/>
+      <details key="end" value="4247"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.229" references="/0/generateElement/%/%.1/%.1/%.17/%.1/%.1">
+      <details key="start" value="4267"/>
+      <details key="end" value="4268"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.230" references="/0/generateElement/%/%.1/%.1/%.17/%.1/%.2">
+      <details key="start" value="4270"/>
+      <details key="end" value="4287"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.231" references="/0/generateElement/%/%.1/%.1/%.17/%.1/%.2/%">
+      <details key="start" value="4270"/>
+      <details key="end" value="4280"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.232" references="/0/generateElement/%/%.1/%.1/%.17/%.1/%.2/%/s">
+      <details key="start" value="4270"/>
+      <details key="end" value="4271"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.233" references="/0/generateElement/%/%.1/%.1/%.18">
+      <details key="start" value="4290"/>
+      <details key="end" value="4303"/>
+      <details key="line" value="89"/>
+    </eAnnotations>
+    <eAnnotations source="positions.234" references="/0/generateElement/%/%.1/%.1/%.19">
+      <details key="start" value="4304"/>
+      <details key="end" value="4373"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.235" references="/0/generateElement/%/%.1/%.1/%.19/%">
+      <details key="start" value="4304"/>
+      <details key="end" value="4330"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.236" references="/0/generateElement/%/%.1/%.1/%.19/%/%">
+      <details key="start" value="4304"/>
+      <details key="end" value="4320"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.237" references="/0/generateElement/%/%.1/%.1/%.19/%/%/%">
+      <details key="start" value="4304"/>
+      <details key="end" value="4314"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.238" references="/0/generateElement/%/%.1/%.1/%.19/%/%/%/s">
+      <details key="start" value="4304"/>
+      <details key="end" value="4305"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.239" references="/0/generateElement/%/%.1/%.1/%.19/%/%/%.1">
+      <details key="start" value="4318"/>
+      <details key="end" value="4319"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.240" references="/0/generateElement/%/%.1/%.1/%.19/%.1">
+      <details key="start" value="4331"/>
+      <details key="end" value="4373"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.241" references="/0/generateElement/%/%.1/%.1/%.19/%.1/%">
+      <details key="start" value="4331"/>
+      <details key="end" value="4341"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.242" references="/0/generateElement/%/%.1/%.1/%.19/%.1/%/s">
+      <details key="start" value="4331"/>
+      <details key="end" value="4332"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.243" references="/0/generateElement/%/%.1/%.1/%.19/%.1/%.1">
+      <details key="start" value="4352"/>
+      <details key="end" value="4353"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.244" references="/0/generateElement/%/%.1/%.1/%.19/%.1/%.2">
+      <details key="start" value="4355"/>
+      <details key="end" value="4372"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.245" references="/0/generateElement/%/%.1/%.1/%.19/%.1/%.2/%">
+      <details key="start" value="4355"/>
+      <details key="end" value="4365"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.246" references="/0/generateElement/%/%.1/%.1/%.19/%.1/%.2/%/s">
+      <details key="start" value="4355"/>
+      <details key="end" value="4356"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.247" references="/0/generateElement/%/%.1/%.1/%.20">
+      <details key="start" value="4375"/>
+      <details key="end" value="4416"/>
+      <details key="line" value="89"/>
+    </eAnnotations>
+    <eAnnotations source="positions.248" references="/0/generateElement/%/%.1/%.1/%.21">
+      <details key="start" value="2936"/>
+      <details key="end" value="3097"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.249" references="/0/generateElement/%/%.1/%.1/%.21/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="3061"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.250" references="/0/generateElement/%/%.1/%.1/%.21/%/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="3050"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.251" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="3030"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.252" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="3009"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.253" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="3005"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.254" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="2964"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.255" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%/%">
+      <details key="start" value="2936"/>
+      <details key="end" value="2942"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.256" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%/%/s">
+      <details key="start" value="2936"/>
+      <details key="end" value="2937"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.257" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%/%.1">
+      <details key="start" value="2943"/>
+      <details key="end" value="2964"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.258" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%.1">
+      <details key="start" value="2965"/>
+      <details key="end" value="3005"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.259" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%.1/%">
+      <details key="start" value="2965"/>
+      <details key="end" value="2995"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.260" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%/%.1/%/aMicroserviceArchitecture">
+      <details key="start" value="2965"/>
+      <details key="end" value="2990"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.261" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%/%.1">
+      <details key="start" value="3006"/>
+      <details key="end" value="3009"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.262" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%.1">
+      <details key="start" value="3010"/>
+      <details key="end" value="3030"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.263" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%.1/%">
+      <details key="start" value="3010"/>
+      <details key="end" value="3020"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.264" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%/%.1/%/s">
+      <details key="start" value="3010"/>
+      <details key="end" value="3011"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.265" references="/0/generateElement/%/%.1/%.1/%.21/%/%/%.1">
+      <details key="start" value="3031"/>
+      <details key="end" value="3050"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.266" references="/0/generateElement/%/%.1/%.1/%.21/%/%.1">
+      <details key="start" value="3051"/>
+      <details key="end" value="3061"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.267" references="/0/generateElement/%/%.1/%.1/%.21/%/%.1/s">
+      <details key="start" value="3051"/>
+      <details key="end" value="3052"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.268" references="/0/generateElement/%/%.1/%.1/%.21/%.1">
+      <details key="start" value="3062"/>
+      <details key="end" value="3097"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.269" references="/0/generateElement/%/%.1/%.1/%.22">
+      <details key="start" value="3106"/>
+      <details key="end" value="3113"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.270" references="/0/generateElement/%/%.1/%.2">
+      <details key="start" value="263"/>
+      <details key="end" value="303"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.271" references="/0/generateElement/%/%.1/%.2/s">
+      <details key="start" value="264"/>
+      <details key="end" value="265"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.272" references="/0/generateElement/%/%.1/%.2/%">
+      <details key="start" value="278"/>
+      <details key="end" value="301"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.273" references="/0/generateElement/%/s">
+      <details key="start" value="205"/>
+      <details key="end" value="216"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.274" references="/0/generateElement/%/%.2">
+      <details key="start" value="219"/>
+      <details key="end" value="253"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.275" references="/0/generateElement/%/%.2/aMicroserviceArchitecture">
+      <details key="start" value="219"/>
+      <details key="end" value="244"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.276" references="/0/generateElement/aMicroserviceArchitecture">
+      <details key="start" value="127"/>
+      <details key="end" value="179"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

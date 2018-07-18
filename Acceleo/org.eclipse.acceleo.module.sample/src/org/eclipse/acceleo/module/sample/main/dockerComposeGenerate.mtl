@@ -1,0 +1,126 @@
+[comment encoding = UTF-8 /]
+[module dockerComposeGenerate('http://it.univa.disim.micro')]
+
+[template public generateElement(aMicroserviceArchitecture : MicroserviceArchitecture)]
+[comment @main/]
+[file ('docker-compose.yml', false, 'UTF-8')]
+version: '3'
+
+services:
+	[for (s : Service | aMicroserviceArchitecture.services)]
+  
+  [s.name/]:
+    image: [aMicroserviceArchitecture.name.toLower()/]/[s.name/]
+    container_name: [s.name/]
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+    ports:
+      - [s.port/]:8080
+    links:
+      - mysql
+      - kafka
+      - zookeeper
+      - cdcservice
+      - [aMicroserviceArchitecture.name.toLower()/]-admin-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql/eventuate
+      SPRING_DATASOURCE_USERNAME: mysqluser
+      SPRING_DATASOURCE_PASSWORD: mysqlpw
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.jdbc.Driver
+      SPRING_DATASOURCE_TIMEOUT: 10000
+      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: zookeeper:2181
+      SPRING_BOOT_ADMIN_URL: http://[aMicroserviceArchitecture.name.toLower()/]-admin-service:8080
+      SPRING_BOOT_ADMIN_USERNAME: admin
+      SPRING_BOOT_ADMIN_PASSWORD: admin
+      SPRING_BOOT_ADMIN_CLIENT_NAME: [s.name/]
+      MONGODB: mongodb:27017/[s.fullname.toLower()/]db
+	[/for]
+
+  [aMicroserviceArchitecture.name.toLower()/]-admin-service:
+    build: ./[aMicroserviceArchitecture.name.toLower()/]-admin
+    container_name: [aMicroserviceArchitecture.name.toLower()/]-admin
+    volumes:
+      - ./build/libs:/app
+    ports:
+      - 5020:8080
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+
+  zookeeper:
+    image: eventuateio/eventuateio-local-zookeeper:0.14.0
+    container_name: zookeeper
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+
+  kafka:
+    image: eventuateio/eventuateio-local-kafka:0.14.0
+    container_name: kafka
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+    ports:
+      - 9092:9092
+    links:
+      - zookeeper
+    environment:
+      - ADVERTISED_HOST_NAME=${DOCKER_HOST_IP}
+      - KAFKA_HEAP_OPTS=-Xmx320m -Xms320m
+      - ZOOKEEPER_SERVERS=zookeeper:2181
+
+  mysql:
+    image: eventuateio/eventuate-tram-sagas-mysql:0.3.0.RELEASE
+    container_name: mysql
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpw
+
+  cdcservice:
+    image: eventuateio/eventuate-tram-cdc-mysql-service:0.3.0.RELEASE
+    container_name: cdcservice
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+    ports:
+      - "8099:8080"
+    links:
+      - mysql
+      - kafka
+      - zookeeper
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql/eventuate
+      SPRING_DATASOURCE_USERNAME: mysqluser
+      SPRING_DATASOURCE_PASSWORD: mysqlpw
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.jdbc.Driver
+      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: zookeeper:2181
+      EVENTUATELOCAL_CDC_DB_USER_NAME: root
+      EVENTUATELOCAL_CDC_DB_PASSWORD: rootpassword
+      EVENTUATELOCAL_CDC_BINLOG_CLIENT_ID: 1234567890
+
+  mongodb:
+    image: mongo:3.0.15
+    container_name: mongodb
+    networks:
+      - [aMicroserviceArchitecture.name.toLower()/]-net
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - '/data/db:/data/db'
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles
+
+networks:
+  [aMicroserviceArchitecture.name.toLower()/]-net:
+  
+[/file]
+[/template]
